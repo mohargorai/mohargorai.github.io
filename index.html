@@ -7,10 +7,9 @@
     <meta name="title" content="Mohar Gorai | Portfolio">
     <meta name="description" content="Portfolio of Mohar Gorai, a B.Tech IT sophomore and software developer specializing in modern web applications.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:url" content="https://moharxd.github.io/Portfolio-Website/">
     <meta property="og:title" content="Mohar Gorai | Portfolio">
     <meta property="og:description" content="Portfolio of Mohar Gorai, a B.Tech IT sophomore and software developer specializing in modern web applications.">
-    <meta property="og:image" content="https://yourwebsite.com/img/og-preview.jpg">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     
@@ -18,6 +17,7 @@
         <style>
             .reveal, .fade-up, body main { opacity: 1 !important; transform: none !important; animation: none !important; }
             .cursor { display: none !important; }
+            html { scroll-behavior: auto !important; }
         </style>
     </noscript>
 </head>
@@ -32,44 +32,183 @@
         <div class="nav-container">
             <div class="logo">MG</div>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="project-work.html">Project/Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Project/Work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container">
-        <div class="fade-up">
-            <div class="glass-panel hero tilt-element">
-                <div class="hero-layout">
-                    <div class="hero-content">
-                        <span class="badge live-sync-badge">
-                            <span class="pulse-dot green-dot" aria-hidden="true"></span>
-                            Open to Opportunities
-                        </span>
+        <section id="home" class="page-section">
+            <div class="fade-up">
+                <div class="glass-panel hero tilt-element">
+                    <div class="hero-layout">
+                        <div class="hero-content">
+                            <span class="badge live-sync-badge">
+                                <span class="pulse-dot green-dot" aria-hidden="true"></span>
+                                Open to Opportunities
+                            </span>
 
-                        <h1 class="headline-container">
-                            <span class="gradient-text typing-text" data-text="Mohar Gorai">Mohar Gorai</span>
-                            <span class="cursor"></span>
-                        </h1>
+                            <h1 class="headline-container">
+                                <span class="gradient-text typing-text" data-text="Mohar Gorai">Mohar Gorai</span>
+                                <span class="cursor"></span>
+                            </h1>
 
-                        <h2>B.Tech IT & Coding enthusiast</h2>
-                        <p>Sophomore at Vellore Institute of Technology pursuing B.Tech in IT. I enjoy building software, experimenting with new technologies, and learning by turning ideas into real projects.</p>
+                            <h2>B.Tech IT & Coding enthusiast</h2>
+                            <p>Sophomore at Vellore Institute of Technology pursuing B.Tech in IT. I enjoy building software, experimenting with new technologies, and learning by turning ideas into real projects.</p>
 
-                        <div class="btn-group">
-                            <a href="project-work.html" class="btn btn-primary">View Projects</a>
-                            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
-                            <a href="assets/Mohar_Resume.pdf" target="_blank" rel="noopener noreferrer" download="Mohar_Gorai_Resume.pdf" class="btn btn-secondary">Download CV</a>
+                            <div class="btn-group">
+                                <a href="#projects" class="btn btn-primary">View Projects</a>
+                                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                                <a href="assets/Mohar_Resume.pdf" target="_blank" rel="noopener noreferrer" download="Mohar_Gorai_Resume.pdf" class="btn btn-secondary">Download CV</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="hero-photo-container">
-                        <img src="img/profile.jpg" alt="Mohar Gorai" class="hero-photo">
+                        <div class="hero-photo-container">
+                            <img src="img/profile.jpg" alt="Mohar Gorai" class="hero-photo">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <div class="page-header reveal">
+                <h1 class="headline-container">
+                    <span class="gradient-text">Foundation Blueprint</span>
+                </h1>
+                <h2>Academic Core & Tech Stack</h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="reveal bento-item">
+                    <div class="glass-card tilt-element square-card">
+                        <h3>Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="date-badge">2011 - 2022</span>
+                                <h4><a href="https://maps.app.goo.gl/wWhYfimi8xbiQJkSA" target="_blank" rel="noopener noreferrer">St.Vincent's High & Technical School</a></h4>
+                                <p>Matriculation, General Studies</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="date-badge">2022 - 2024</span>
+                                <h4><a href="https://maps.app.goo.gl/nD2ao2iAiJb1SaeE7" target="_blank" rel="noopener noreferrer">St. Patrick's Higher Secondary School</a></h4>
+                                <p>Intermediate, PCM with Computer Science</p>
+                            </div>
+                            <div class="timeline-item active-timeline-item">
+                                <span class="date-badge">2024 - 2028</span>
+                                <h4><a href="https://maps.app.goo.gl/pZkYUgh3742BgZXWA" target="_blank" rel="noopener noreferrer">Vellore Institute of Technology</a></h4>
+                                <p>B.Tech in Information Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal bento-item delay-1">
+                    <div class="glass-card tilt-element square-card">
+                        <h3>Languages</h3>
+                        <ul class="language-list">
+                            <li><strong>English</strong> - Fluent</li>
+                            <li><strong>Bengali</strong> - Fluent</li>
+                            <li><strong>Hindi</strong> - Fluent</li>
+                            <li><strong>Japanese</strong> - N5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="reveal tech-stack-wrapper delay-2">
+                    <div class="glass-card tilt-element">
+                        <h3>Skill Set</h3>
+                        <div class="tech-pill-container">
+                            <span class="tech-pill" tabindex="0">Python</span>
+                            <span class="tech-pill" tabindex="0">C / C++</span>
+                            <span class="tech-pill" tabindex="0">Java</span>
+                            <span class="tech-pill" tabindex="0">JavaScript</span>
+                            <span class="tech-pill" tabindex="0">React</span>
+                            <span class="tech-pill" tabindex="0">Node.js</span>
+                            <span class="tech-pill" tabindex="0">HTML5 / CSS3</span>
+                            <span class="tech-pill" tabindex="0">PostgreSQL</span>
+                            <span class="tech-pill" tabindex="0">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page-section">
+            <div class="page-header reveal">
+                <h1 class="headline-container">
+                    <span class="gradient-text">Selected Works</span>
+                </h1>
+                <h2>Recent software, hackathons, and engineering projects.</h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="reveal bento-item">
+                    <div class="glass-card tilt-element">
+                        <span class="date-badge">Web & Application</span>
+                        <h3>Online Appointment Booking App</h3>
+                        <p>A robust online platform engineered to handle secure scheduling, client management, and appointment tracking efficiently.</p>
+                        <div class="card-actions">
+                            <a href="https://github.com/MoharXD/Online-Appointment-Booking-App" target="_blank" rel="noopener noreferrer" class="btn-small">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal bento-item delay-1">
+                    <div class="glass-card tilt-element">
+                        <span class="date-badge">Hackathon Project (SAH)</span>
+                        <h3>AI Resume Scoring System</h3>
+                        <p>An automated resume evaluation tool developed during the SAH hackathon to parse, score, and rank candidate profiles based on given criteria.</p>
+                        <div class="card-actions">
+                            <a href="https://github.com/MoharXD/SAH_hackathon_ResumeScoring" target="_blank" rel="noopener noreferrer" class="btn-small">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal bento-item delay-2">
+                    <div class="glass-card tilt-element">
+                        <span class="date-badge">Full-Stack</span>
+                        <h3>Ticket Booking System</h3>
+                        <p>A comprehensive full-stack web application designed for seamless booking, secure transactions, and efficient ticket management.</p>
+                        <div class="card-actions">
+                            <a href="https://github.com/MoharXD/ticketing-system---project" target="_blank" rel="noopener noreferrer" class="btn-small">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal delay-3" style="margin-top: 3rem;">
+                <div class="glass-card tilt-element github-card">
+                    <span class="date-badge live-sync-badge">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        Live Sync
+                    </span>
+                    <h3>GitHub Activity</h3>
+                    <p>My daily coding contributions and commits over the last year.</p>
+                    <div class="github-calendar-container">
+                        <img src="https://ghchart.rshah.org/06b6d4/MoharXD" alt="MoharXD's Github Contribution Chart">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <div class="glass-panel tilt-element contact-wrapper reveal">
+                <h1 class="headline-container" style="justify-content: center;">
+                    <span class="gradient-text">Let's Connect</span>
+                </h1>
+                <p>Feel free to reach out for internships, part-time roles, collaborations, hackathons, or interesting project opportunities.</p>
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> <a href="mailto:work.mohargorai@gmail.com">work.mohargorai@gmail.com</a></li>
+                    <li><strong>Phone:</strong> <a href="tel:+917863995905">+91 7863995905</a></li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/MoharXD" target="_blank" rel="noopener noreferrer">github.com/MoharXD</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mohar-gorai-518123338/" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohar-gorai</a></li>
+                    <li><strong>Location:</strong> <a href="https://maps.app.goo.gl/1PmMYq6e4eWpVubz8" target="_blank" rel="noopener noreferrer">Asansol, West Bengal</a></li>
+                </ul>
+            </div>
+        </section>
     </main>
 
     <footer class="glass-footer">

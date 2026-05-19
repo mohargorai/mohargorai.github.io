@@ -1,37 +1,73 @@
 /**
  * ==========================================================================
  * MOHAR GORAI PORTFOLIO - MAIN JAVASCRIPT
- * Description: Handles UI interactions, scroll reveal animations, 
- * 3D tilt effects, typing animations, and the custom cursor trail.
  * ==========================================================================
  */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // ==========================================
-    // 1. SCROLL REVEAL (INTERSECTION OBSERVER)
+    // 0. SCROLLSPY (ACTIVE NAV LINK UPDATER)
     // ==========================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    const sections = document.querySelectorAll('.page-section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= (sectionTop - 200)) { 
+                current = section.getAttribute('id');
             }
         });
-    }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // ==========================================
+    // 1. DIRECTION-AWARE SCROLL REVEAL 
+    // ==========================================
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOptions = {
+        threshold: 0.1, // Triggers when 10% of the element is visible
+        rootMargin: "-50px 0px -50px 0px" // Adds a buffer to top and bottom to prevent edge flickering
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Element enters screen: Animate it in and clear hidden states
+                entry.target.classList.add('active');
+                entry.target.classList.remove('hidden-up', 'hidden-down');
+            } else {
+                // Element leaves screen: Remove active class
+                entry.target.classList.remove('active');
+                
+                // Determine direction based on where the element is relative to the viewport
+                if (entry.boundingClientRect.top < 0) {
+                    // Element went out the top of the screen
+                    entry.target.classList.add('hidden-up');
+                } else {
+                    // Element went out the bottom of the screen
+                    entry.target.classList.add('hidden-down');
+                }
+            }
+        });
+    }, revealOptions);
+
+    revealElements.forEach(el => revealOnScroll.observe(el));
 
 
     // ==========================================
     // 2. 3D TILT EFFECT (HARDWARE ACCELERATED)
     // ==========================================
-    // UPDATE: Only apply on devices with a fine pointer (mouse/trackpad), ignores touchscreens
     const isFinePointer = window.matchMedia("(pointer: fine)").matches;
     const tiltElements = document.querySelectorAll('.tilt-element');
 
@@ -59,20 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     // ==========================================
     // 3. DYNAMIC TYPING ANIMATION
     // ==========================================
     const typingTextElement = document.querySelector('.typing-text');
-    // Accessibility check: disable animation if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (typingTextElement && !prefersReducedMotion) {
         const textToType = typingTextElement.getAttribute('data-text') || "";
-        
-        // UPDATE: Clear the hardcoded HTML fallback text before starting the animation
         typingTextElement.textContent = ""; 
-        
         let index = 0;
 
         const typewriter = () => {
@@ -86,11 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(typewriter, 800);
     }
 
-
     // ==========================================
     // 4. GLASSMORPHIC CURSOR TRAIL ANIMATION
     // ==========================================
-    // UPDATE: Restrict to fine pointer devices to prevent bugs on iPads/touch-laptops
     if (isFinePointer) {
         let lastX = 0;
         let lastY = 0;
