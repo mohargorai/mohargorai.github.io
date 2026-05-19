@@ -1,8 +1,20 @@
-# 🚀 Developer Portfolio
+# 🚀 Mohar Gorai | Full-Stack Developer Portfolio
 
 > A modern, highly optimized developer portfolio built with vanilla web technologies, featuring a glass aesthetic, ambient 3D animations, and a strict focus on web performance and accessibility.
 
 🌐 **[View Live Website](https://moharxd.github.io/Portfolio-Website/)**
+
+## 👨‍💻 Developer Profile
+
+I am a Full-Stack Software Developer currently pursuing a B.Tech in Information Technology at the Vellore Institute of Technology. I specialize in building scalable web applications, real-time systems, and highly optimized, accessible user interfaces.
+
+**Core Technical Stack:** Node.js, Express, MongoDB, Vanilla JavaScript, C/C++, and Python.
+
+### Highlighted Engineering Works
+* **Real-Time Event Ticketing Platform:** Developed a full-stack system using Node.js, Express, and MongoDB, featuring live seat synchronization, role-based access control, and an administrative dashboard.
+* **Approximate Query Engine Dashboard:** Built a high-speed interactive dashboard focused on statistical sampling and performance visualization for the GDG On Campus VIT Vellore Hackathon.
+* **Smart Acoustic Protection System (SAPS):** Engineered a hardware-software integration project designed to function as an active acoustic privacy shield.
+* **Nihongo Tutor:** Designed a software application to assist beginners in learning Japanese scripts (Hiragana, Katakana, and Kanji).
 
 ## ✨ Key Technical Features
 
@@ -29,20 +41,19 @@ Built entirely from scratch to ensure maximum control over the DOM and asset loa
 ```text
 MoharXD.github.io/
 │
-├── index.html            # Entry point: Hero section & high-level intro
-├── about.html            # Education timeline & language proficiencies
-├── project-work.html     # Bento grid of featured apps & GitHub activity
-├── contact.html          # Professional links, email & location
+├── .gitattributes        # Git configuration for line endings
+├── index.html            # Single-Page Application (SPA) Entry point
 ├── README.md             # Project overview & documentation
 │
-├── css/
+├── assets/               
+│   └── Mohar_Resume.pdf  # Downloadable CV
+│
+├── css/                  
 │   └── style.css         # Glassmorphism tokens, responsive rules & animations
 │
-├── js/
-│   └── script.js         # 3D Tilt, a11y motion checks, & cursor trail logic
-│
 ├── img/                  # Optimized visual assets
+│   ├── favicon.png       # Site favicon
 │   └── profile.jpg       # Hero portrait
 │
-└── assets/               # External documents
-    └── Mohar_Resume.pdf  # Downloadable CV
+└── js/                   
+    └── script.js         # 3D Tilt, a11y motion checks, & cursor trail logic
