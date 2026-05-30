@@ -12,23 +12,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll('.page-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
+    const updateActiveLink = () => {
         let current = '';
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (scrollY >= (sectionTop - 200)) { 
+            if (window.scrollY >= (sectionTop - 200)) { 
                 current = section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            if (current && link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
             }
         });
-    });
+    };
+
+    window.addEventListener('scroll', updateActiveLink);
+    // Initialize on load to set correct active link
+    updateActiveLink();
 
     // ==========================================
     // 1. DIRECTION-AWARE SCROLL REVEAL 
@@ -81,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const xRotation = -((y - rect.height / 2) / rect.height) * 10;
                 const yRotation = ((x - rect.width / 2) / rect.width) * 10;
 
+                element.style.transition = 'transform 0.1s ease-out';
                 element.style.transform = `perspective(1000px) scale(1.02) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
             });
 
@@ -90,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             element.addEventListener('mouseenter', () => {
-                element.style.transition = 'none';
+                element.style.transition = 'transform 0.1s ease-out';
             });
         });
     }
