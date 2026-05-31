@@ -34,9 +34,9 @@ export const projects = [
     description: "A robust online platform engineered to handle secure scheduling, client management, and appointment tracking efficiently.",
     link: "https://github.com/MoharXD/Online-Appointment-Booking-App",
     liveLink: "",
-    img1: "/projects/app1.png",
-    img2: "/projects/app2.png",
-    img3: "/projects/app3.png"
+    img1: `${import.meta.env.BASE_URL}projects/app1.png`,
+    img2: `${import.meta.env.BASE_URL}projects/app2.png`,
+    img3: `${import.meta.env.BASE_URL}projects/app3.png`
   },
   {
     num: "02",
@@ -45,9 +45,9 @@ export const projects = [
     description: "An automated resume evaluation tool developed during the SAH hackathon to parse, score, and rank candidate profiles based on given criteria.",
     link: "https://github.com/MoharXD/SAH_hackathon_ResumeScoring",
     liveLink: "https://queryengine.vercel.app/",
-    img1: "/projects/resume1.png",
-    img2: "/projects/resume2.png",
-    img3: "/projects/resume3.png"
+    img1: `${import.meta.env.BASE_URL}projects/resume1.png`,
+    img2: `${import.meta.env.BASE_URL}projects/resume2.png`,
+    img3: `${import.meta.env.BASE_URL}projects/resume3.png`
   },
   {
     num: "03",
@@ -56,9 +56,9 @@ export const projects = [
     description: "A comprehensive full-stack web application designed for seamless booking, secure transactions, and efficient ticket management.",
     link: "https://github.com/MoharXD/ticketing-system---project",
     liveLink: "https://ticketing-system-project.onrender.com/",
-    img1: "/projects/ticket_booking.png",
-    img2: "/projects/ticket_booking.png",
-    img3: "/projects/ticket_booking.png"
+    img1: `${import.meta.env.BASE_URL}projects/ticket_booking.png`,
+    img2: `${import.meta.env.BASE_URL}projects/ticket_booking.png`,
+    img3: `${import.meta.env.BASE_URL}projects/ticket_booking.png`
   }
 ];
 
@@ -67,56 +67,56 @@ export const certificates = [
     title: "Smart ABES Hackathon 2.0 Finalist",
     issuer: "ABES ACM Student Chapter",
     date: "Feb 2026",
-    image: "/certificates/photo_2026-05-31_03-32-13.jpg",
-    link: "/certificates/photo_2026-05-31_03-32-13.jpg"
+    image: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-13.jpg`,
+    link: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-13.jpg`
   },
   {
     title: "IEEE Hybrid Hackathon",
     issuer: "IEEE Information Theory Society, VIT",
     date: "Mar 2026",
-    image: "/certificates/photo_2026-05-31_03-32-42.jpg",
-    link: "/certificates/photo_2026-05-31_03-32-42.jpg"
+    image: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-42.jpg`,
+    link: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-42.jpg`
   },
   {
     title: "Secure Web App Hackathon",
     issuer: "VIT Industry Academia Conclave",
     date: "Jan 2026",
-    image: "/certificates/photo_2026-05-31_03-32-48.jpg",
-    link: "/certificates/photo_2026-05-31_03-32-48.jpg"
+    image: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-48.jpg`,
+    link: `${import.meta.env.BASE_URL}certificates/photo_2026-05-31_03-32-48.jpg`
   },
   {
     title: "Forests and their Management",
     issuer: "NPTEL Course Certification",
     date: "2025",
-    pdf: "/certificates/Forests and their Management.pdf",
-    link: "/certificates/Forests and their Management.pdf"
+    pdf: `${import.meta.env.BASE_URL}certificates/Forests and their Management.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/Forests and their Management.pdf`
   },
   {
     title: "Wild Life Ecology",
     issuer: "NPTEL Course Certification",
     date: "2025",
-    pdf: "/certificates/Wild Life Ecology.pdf",
-    link: "/certificates/Wild Life Ecology.pdf"
+    pdf: `${import.meta.env.BASE_URL}certificates/Wild Life Ecology.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/Wild Life Ecology.pdf`
   },
   {
     title: "Education for Sustainable Development",
     issuer: "NPTEL Course Certification",
     date: "2026",
-    pdf: "/certificates/NOC26HS58S298550631104678380.pdf",
-    link: "/certificates/NOC26HS58S298550631104678380.pdf"
+    pdf: `${import.meta.env.BASE_URL}certificates/NOC26HS58S298550631104678380.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/NOC26HS58S298550631104678380.pdf`
   },
   {
     title: "WomenTechies'26 Participation",
     issuer: "GDG On Campus - VIT Vellore",
     date: "2026",
-    pdf: "/certificates/24BIT0462.pdf",
-    link: "/certificates/24BIT0462.pdf"
+    pdf: `${import.meta.env.BASE_URL}certificates/24BIT0462.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/24BIT0462.pdf`
   },
   {
     title: "OCI 2025 Generative AI Professional",
     issuer: "Oracle University",
     date: "Sep 2025",
-    pdf: "/certificates/eCertificate.pdf",
-    link: "/certificates/eCertificate.pdf"
+    pdf: `${import.meta.env.BASE_URL}certificates/eCertificate.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/eCertificate.pdf`
   }
 ];
