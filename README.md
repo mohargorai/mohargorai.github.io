@@ -77,7 +77,7 @@ To get a local copy up and running, follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/MoharXD/Portfolio-Website.git
+   git clone https://github.com/mohargorai/mohargorai.github.io.git
    ```
 2. Install NPM packages
    ```sh
@@ -98,7 +98,7 @@ Sophomore at Vellore Institute of Technology, pursuing B.Tech in IT.
 
 - **Email:** [work.mohargorai@gmail.com](mailto:work.mohargorai@gmail.com)
 - **LinkedIn:** [linkedin.com/in/mohar-gorai](https://www.linkedin.com/in/mohar-gorai-518123338/)
-- **GitHub:** [github.com/MoharXD](https://github.com/MoharXD)
+- **GitHub:** [github.com/mohargorai](https://github.com/mohargorai)
 
 ---
 

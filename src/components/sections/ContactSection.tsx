@@ -100,12 +100,12 @@ export const ContactSection = () => {
         </FadeIn>
 
         <FadeIn delay={0.3} y={20} className="w-full">
-          <a href="https://github.com/MoharXD" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="https://github.com/mohargorai" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">03 // GitHub</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
               <span className="text-[#D7E2EA] font-black text-xl sm:text-2xl lg:text-3xl xl:text-4xl group-hover:text-white group-hover:translate-x-2 transition-all duration-300">
-                github.com/MoharXD
+                github.com/mohargorai
               </span>
               <span className="text-xl sm:text-3xl opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white">↗</span>
             </div>
