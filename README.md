@@ -96,9 +96,9 @@ To get a local copy up and running, follow these simple steps.
 **Mohar Gorai**  
 Sophomore at Vellore Institute of Technology, pursuing B.Tech in IT.
 
-- **Email:** <a href="mailto:work.mohargorai@gmail.com" target="_blank">work.mohargorai@gmail.com</a>
-- **LinkedIn:** <a href="https://www.linkedin.com/in/mohar-gorai-518123338/" target="_blank">linkedin.com/in/mohar-gorai</a>
-- **GitHub:** <a href="https://github.com/mohargorai" target="_blank">github.com/mohargorai</a>
+- **Email:** [work.mohargorai@gmail.com](mailto:work.mohargorai@gmail.com)
+- **LinkedIn:** [linkedin.com/in/mohar-gorai](https://www.linkedin.com/in/mohar-gorai-518123338/)
+- **GitHub:** [github.com/mohargorai](https://github.com/mohargorai)
 
 ---
 
