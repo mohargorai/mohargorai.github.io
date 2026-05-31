@@ -2,13 +2,6 @@
   <h1 align="center">Mohar Gorai - Developer Portfolio</h1>
   <p align="center">
     A premium, highly interactive, and award-winning styled developer portfolio built with modern web technologies.
-    <br />
-    <a href="https://github.com/MoharXD/Portfolio-Website"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/MoharXD/Portfolio-Website/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/MoharXD/Portfolio-Website/issues">Request Feature</a>
   </p>
 
   <!-- Badges -->
