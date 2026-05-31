@@ -2,7 +2,7 @@ import React from 'react';
 
 export const DownloadCVButton = () => {
   return (
-    <a href="/assets/Mohar_Resume.pdf" 
+    <a href={`${import.meta.env.BASE_URL}assets/Mohar_Resume.pdf`} 
        target="_blank" 
        rel="noopener noreferrer"
        download="Mohar_Gorai_Resume.pdf"
