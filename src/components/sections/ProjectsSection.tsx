@@ -39,7 +39,7 @@ export const ProjectsSection = () => {
       <FadeIn delay={0.2} duration={0.9} x={-60} y={0} className="absolute top-[10%] left-[1%] sm:left-[3%] md:left-[5%] w-[100px] sm:w-[140px] md:w-[180px] z-0 opacity-80">
         <SquishBounce>
           <motion.div animate={{ y: [0, -15, 0], rotate: [0, 8, -4, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
-            <img src="/img/glass_folder.png" alt="Glass Folder" className="w-full h-auto object-contain drop-shadow-2xl" />
+            <img src={`${import.meta.env.BASE_URL}img/glass_folder.png`} alt="Glass Folder" className="w-full h-auto object-contain drop-shadow-2xl" />
           </motion.div>
         </SquishBounce>
       </FadeIn>
@@ -47,7 +47,7 @@ export const ProjectsSection = () => {
       <FadeIn delay={0.4} duration={0.9} x={60} y={0} className="absolute bottom-[20%] right-[1%] sm:right-[3%] md:right-[5%] w-[90px] sm:w-[130px] md:w-[170px] z-0 opacity-80">
         <SquishBounce>
           <motion.div animate={{ y: [0, 20, 0], rotate: [0, -6, 5, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>
-            <img src="/img/glass_rocket.png" alt="Glass Rocket" className="w-full h-auto object-contain drop-shadow-2xl" />
+            <img src={`${import.meta.env.BASE_URL}img/glass_rocket.png`} alt="Glass Rocket" className="w-full h-auto object-contain drop-shadow-2xl" />
           </motion.div>
         </SquishBounce>
       </FadeIn>

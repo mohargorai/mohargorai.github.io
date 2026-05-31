@@ -12,8 +12,8 @@ export const ServicesSection = () => {
       {/* Decorative 3D Images */}
       <FadeIn delay={0.1} duration={0.9} x={-80} y={0} className="absolute top-[15%] left-[1%] sm:left-[3%] md:left-[5%] w-[110px] sm:w-[150px] md:w-[190px] z-0 opacity-80">
         <SquishBounce>
-          <motion.div animate={{ y: [0, -20, 0], rotate: [0, 5, -2, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-            <img src="/img/glass_laptop.png" alt="Laptop" className="w-full h-auto object-contain drop-shadow-2xl" />
+          <motion.div animate={{ y: [0, -20, 0], rotate: [0, 5, -3, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+            <img src={`${import.meta.env.BASE_URL}img/glass_laptop.png`} alt="Glass Laptop" className="w-full h-auto object-contain drop-shadow-[0_30px_40px_rgba(215,226,234,0.15)]" />
           </motion.div>
         </SquishBounce>
       </FadeIn>

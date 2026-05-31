@@ -55,7 +55,7 @@ export const ContactSection = () => {
             }}
             style={{ perspective: 1000 }}
           >
-            <img src="/img/glass_phone.png" alt="Glass Phone" className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(215,226,234,0.2)]" />
+            <img src={`${import.meta.env.BASE_URL}img/glass_phone.png`} alt="Glass Phone" className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(215,226,234,0.2)]" />
           </motion.div>
         </SquishBounce>
       </FadeIn>

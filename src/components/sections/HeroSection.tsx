@@ -76,7 +76,7 @@ export const HeroSection = () => {
         <Magnet padding={150} strength={3}>
           <div className="w-full aspect-square rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-2 border-[#D7E2EA]/20">
             <img 
-              src="/img/profile.jpg" 
+              src={`${import.meta.env.BASE_URL}img/profile.jpg`} 
               alt="Mohar Gorai" 
               className="w-full h-full object-cover"
               style={{ 

@@ -55,7 +55,7 @@ export const CertificatesSection = () => {
             <SquishBounce>
               <motion.div animate={{ y: [0, -15, 0], rotate: [0, 8, -4, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
                 <img 
-                  src="/img/glass_trophy_cutout.png" 
+                  src={`${import.meta.env.BASE_URL}img/glass_trophy_cutout.png`} 
                   alt="Neon Glass Trophy" 
                   className="w-full h-auto object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.4)]" 
                 />
