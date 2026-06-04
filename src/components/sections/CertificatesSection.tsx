@@ -129,7 +129,7 @@ export const CertificatesSection = () => {
         {certificates.map((cert, index) => (
           <div 
             key={index} 
-            className={`absolute inset-0 w-full h-full transition-opacity duration-300 ease-out ${hoveredIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-center ${hoveredIndex === index ? 'opacity-100 scale-100 rotate-0 z-10' : 'opacity-0 scale-[0.85] -rotate-3 z-0'}`}
           >
             {cert.image ? (
               <img src={cert.image} alt={cert.title} className="w-full h-full object-cover" />
