@@ -54,7 +54,7 @@ export const AboutSection = () => {
 
         <div className="mt-6 sm:mt-8 md:mt-10 w-full max-w-[560px]">
           <AnimatedText 
-            text="I am a Sophomore at Vellore Institute of Technology pursuing my B.Tech in IT. I focus on full-stack development, algorithms, and software engineering. I truly enjoy building software, experimenting with new technologies, and learning by turning ideas into real projects. Let's build something incredible together!" 
+            text="I am a Junior at Vellore Institute of Technology pursuing my B.Tech in IT. I focus on full-stack development, algorithms, and software engineering. I truly enjoy building software, experimenting with new technologies, and learning by turning ideas into real projects. Let's build something incredible together!" 
             className="text-[#D7E2EA] font-medium text-center leading-relaxed text-[clamp(1rem,2vw,1.35rem)]"
           />
         </div>
