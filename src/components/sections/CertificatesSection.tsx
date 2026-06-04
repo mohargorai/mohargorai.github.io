@@ -9,18 +9,8 @@ import { certificates } from '../../constants/data';
 // Configure the worker for PDF.js using a CDN to avoid build issues
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-const GRID_DELAYS = [
-  0.12, 0.03, 0.15, 0.06,
-  0.08, 0.18, 0.02, 0.11,
-  0.05, 0.14, 0.09, 0.00,
-  0.17, 0.07, 0.04, 0.13
-];
-
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [activeCertIndex, setActiveCertIndex] = useState<number | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const transitionTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
@@ -37,8 +27,8 @@ export const CertificatesSection = () => {
     };
 
     const handleScroll = () => {
+      // Hide the popup immediately when the user scrolls to prevent it from sticking
       setHoveredIndex(null);
-      if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -49,34 +39,6 @@ export const CertificatesSection = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [cursorX, cursorY]);
-
-  const handleMouseEnter = (index: number) => {
-    if (index === hoveredIndex) return;
-    setHoveredIndex(index);
-    
-    // If the popup is invisible (or nearly), skip the grid transition and just show it
-    if (opacity.get() < 0.1) {
-      setActiveCertIndex(index);
-      setIsTransitioning(false);
-      return;
-    }
-
-    // Switching between items while visible
-    setIsTransitioning(true);
-    if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
-    
-    transitionTimeoutRef.current = setTimeout(() => {
-      setActiveCertIndex(index);
-      setIsTransitioning(false);
-    }, 250); // Swap the image exactly when the grid squares are fully covering it
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-    if (transitionTimeoutRef.current) {
-      clearTimeout(transitionTimeoutRef.current);
-    }
-  };
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -132,8 +94,8 @@ export const CertificatesSection = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="group block relative border-b border-white/10 py-5 sm:py-6 transition-all duration-500 hover:border-[#D7E2EA]/40 cursor-pointer"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4">
                 
@@ -177,7 +139,7 @@ export const CertificatesSection = () => {
         {certificates.map((cert, index) => (
           <div 
             key={index} 
-            className={`absolute inset-0 w-full h-full transition-opacity duration-0 ${activeCertIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-center ${hoveredIndex === index ? 'opacity-100 scale-100 rotate-0 z-10' : 'opacity-0 scale-[0.85] -rotate-3 z-0'}`}
           >
             {cert.image ? (
               <img src={cert.image} alt={cert.title} className="w-full h-full object-cover" />
@@ -199,26 +161,11 @@ export const CertificatesSection = () => {
                  </div>
                </div>
             ) : null}
+            
+            {/* Soft inner shadow overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none rounded-[24px]"></div>
           </div>
         ))}
-
-        {/* The Grid Shutter Overlay */}
-        <div className="absolute inset-0 z-20 pointer-events-none grid grid-cols-4 grid-rows-4">
-          {GRID_DELAYS.map((delay, i) => (
-            <div 
-              key={i} 
-              className="w-full h-full bg-[#0C0C0C] transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]"
-              style={{
-                transitionDelay: `${delay}s`,
-                transform: isTransitioning ? 'scale(1.05)' : 'scale(0)',
-                transformOrigin: 'center'
-              }}
-            ></div>
-          ))}
-        </div>
-
-        {/* Soft inner shadow overlay - ALWAYS ON TOP */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none rounded-[24px] z-30"></div>
       </motion.div>
       
     </section>

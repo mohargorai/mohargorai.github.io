@@ -72,7 +72,7 @@ export const ContactSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 w-full max-w-[1400px] mt-0 sm:mt-4 relative z-10 px-0 sm:px-4">
         
         {/* Left Column: Contact List */}
-        <div className="flex flex-col w-full justify-start pt-4">
+        <div className="flex flex-col w-full justify-between h-full pt-4">
         <FadeIn delay={0.1} y={20} className="w-full">
           <a href="mailto:work.mohargorai@gmail.com" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
