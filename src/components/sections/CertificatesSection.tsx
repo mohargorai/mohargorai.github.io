@@ -20,7 +20,7 @@ export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeCertIndex, setActiveCertIndex] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const transitionTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const transitionTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
