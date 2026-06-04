@@ -7,7 +7,7 @@ import { services } from '../../constants/data';
 
 export const ServicesSection = () => {
   return (
-    <section id="skills" className="bg-[#121316] border-t border-white/5 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-16 sm:py-20 relative z-10 overflow-hidden">
+    <section id="skills" className="bg-[#121316] border-t border-white/5 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-5 sm:px-8 md:px-10 py-20 pb-20 relative z-10 overflow-hidden">
       
       {/* Decorative 3D Images */}
       <FadeIn delay={0.1} duration={0.9} x={-80} y={0} className="absolute top-[15%] left-[1%] sm:left-[3%] md:left-[5%] w-[110px] sm:w-[150px] md:w-[190px] z-0 opacity-80">
@@ -22,7 +22,7 @@ export const ServicesSection = () => {
       <FadeIn y={40} className="relative z-10">
         <TypingHeading
           text="SKILL SET"
-          className="hero-heading font-black uppercase text-center mb-10 sm:mb-14 md:mb-16 leading-none tracking-normal" 
+          className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-24 leading-none tracking-normal" 
           style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
         />
       </FadeIn>

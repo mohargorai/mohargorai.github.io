@@ -51,7 +51,7 @@ export const CertificatesSection = () => {
   }, [hoveredIndex, opacity, scale]);
 
   return (
-    <section id="certificates" className="bg-[#121316] min-h-screen flex flex-col py-20 sm:py-32 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-14 cursor-default">
+    <section id="certificates" className="bg-[#121316] min-h-screen flex flex-col py-20 pb-20 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
       
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -59,7 +59,7 @@ export const CertificatesSection = () => {
         <div className="absolute bottom-[-10%] right-[-5%] w-[30vw] h-[30vw] bg-blue-500/10 blur-[100px] rounded-full"></div>
       </div>
 
-      <div className="px-5 sm:px-8 md:px-10 mb-10 sm:mb-20 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center">
+      <div className="px-5 sm:px-8 md:px-10 mb-16 sm:mb-20 md:mb-24 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center">
         <FadeIn y={40} className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           <div className="relative w-[100px] sm:w-[120px] md:w-[160px] lg:w-[180px] aspect-square z-0 shrink-0">
             <SquishBounce>

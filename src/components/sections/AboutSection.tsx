@@ -47,7 +47,7 @@ export const AboutSection = () => {
         <FadeIn delay={0} y={40}>
           <TypingHeading 
             text="ABOUT ME" 
-            className="hero-heading font-black uppercase leading-none tracking-normal text-center mb-4 sm:mb-6 md:mb-8" 
+            className="hero-heading font-black uppercase leading-none tracking-normal text-center mb-10 sm:mb-14 md:mb-16" 
             style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
           />
         </FadeIn>

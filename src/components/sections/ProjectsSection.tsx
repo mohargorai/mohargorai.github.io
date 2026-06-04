@@ -54,7 +54,7 @@ export const ProjectsSection = () => {
       <FadeIn y={40} className="relative z-10">
         <TypingHeading
           text="PROJECTS"
-          className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none tracking-normal" 
+          className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-24 leading-none tracking-normal" 
           style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
         />
       </FadeIn>
