@@ -27,16 +27,16 @@ export const ServicesSection = () => {
         />
       </FadeIn>
 
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 sm:gap-5 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6 sm:gap-8 relative z-10">
         {services.map((svc, i) => (
-          <FadeIn key={svc.num} delay={i * 0.1} y={30} className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.1rem)] flex-shrink-0">
-            <div className="w-full h-full rounded-[20px] sm:rounded-[24px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-5 sm:p-6 flex flex-col shadow-xl relative hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(215,226,234,0.08)] hover:bg-[#121316]/60 transition-all duration-300 group overflow-hidden">
+          <FadeIn key={svc.num} delay={i * 0.1} y={30} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.35rem)] flex-shrink-0">
+            <div className="w-full h-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-6 sm:p-8 flex flex-col shadow-xl relative hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(215,226,234,0.08)] hover:bg-[#121316]/60 transition-all duration-300 group overflow-hidden">
               <div className="absolute -right-8 -top-8 w-32 h-32 bg-[#D7E2EA]/5 rounded-full blur-3xl group-hover:bg-[#D7E2EA]/10 transition-colors duration-500"></div>
               
-              <span className="hero-heading font-black leading-none tracking-tighter mb-3 sm:mb-4 text-[#D7E2EA]/20 group-hover:text-[#D7E2EA]/40 transition-colors duration-300" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              <span className="hero-heading font-black leading-none tracking-tighter mb-4 sm:mb-6 text-[#D7E2EA]/20 group-hover:text-[#D7E2EA]/40 transition-colors duration-300" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                 {svc.num}
               </span>
-              <h3 className="font-bold uppercase text-[#D7E2EA] mb-3 text-lg sm:text-xl z-10">
+              <h3 className="font-bold uppercase text-[#D7E2EA] mb-4 text-xl sm:text-2xl z-10">
                 {svc.title}
               </h3>
               <div className="flex flex-wrap gap-2 z-10">
