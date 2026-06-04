@@ -20,15 +20,32 @@ export const AnimatedText = ({ text, className = '' }: { text: string, className
     offset: ['start 0.8', 'end 0.2']
   });
 
-  const characters = text.split("");
+  const words = text.split(" ");
+  let currentProgress = 0;
+  const totalChars = text.length;
 
   return (
-    <p ref={containerRef} className={`relative flex flex-wrap justify-center ${className}`}>
-      {characters.map((char, i) => {
-        const start = i / characters.length;
-        const end = start + (1 / characters.length);
+    <p ref={containerRef} className={`relative ${className}`}>
+      {words.map((word, wordIndex) => {
+        const chars = word.split("");
+        const wordNode = (
+          <span key={wordIndex} className="inline-block whitespace-nowrap">
+            {chars.map((char, charIndex) => {
+              const start = currentProgress / totalChars;
+              const end = start + (1 / totalChars);
+              currentProgress++;
+              return (
+                <Character key={charIndex} char={char} progress={scrollYProgress} range={[start, end]} />
+              );
+            })}
+          </span>
+        );
+        currentProgress++; // Increment for the space
         return (
-          <Character key={i} char={char} progress={scrollYProgress} range={[start, end]} />
+          <React.Fragment key={wordIndex}>
+            {wordNode}
+            {wordIndex < words.length - 1 && " "}
+          </React.Fragment>
         );
       })}
     </p>
