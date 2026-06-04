@@ -91,7 +91,7 @@ export const AboutSection = () => {
               <ul className="flex flex-col gap-4 sm:gap-6">
                 <li className="flex justify-between items-center border-b border-[#D7E2EA]/10 pb-4">
                   <strong className="text-[#D7E2EA] text-lg sm:text-xl font-medium">English</strong>
-                  <span className="text-[#D7E2EA]/60 uppercase tracking-widest text-sm">C2 Level</span>
+                  <span className="text-[#D7E2EA]/60 uppercase tracking-widest text-sm">C2</span>
                 </li>
                 <li className="flex justify-between items-center border-b border-[#D7E2EA]/10 pb-4">
                   <strong className="text-[#D7E2EA] text-lg sm:text-xl font-medium">Bengali</strong>
