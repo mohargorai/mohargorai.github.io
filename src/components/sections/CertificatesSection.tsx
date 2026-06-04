@@ -26,8 +26,18 @@ export const CertificatesSection = () => {
       cursorY.set(e.clientY);
     };
 
+    const handleScroll = () => {
+      // Hide the popup immediately when the user scrolls to prevent it from sticking
+      setHoveredIndex(null);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [cursorX, cursorY]);
 
   useEffect(() => {
