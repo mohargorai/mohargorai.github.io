@@ -36,7 +36,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="min-h-[80vh] flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
+    <section id="contact" className="min-h-[80vh] flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-16 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
       
       {/* Decorative 3D Images */}
       <FadeIn delay={0.1} duration={0.9} x={-60} y={0} className="hidden lg:block absolute top-[10%] left-[2%] w-[100px] xl:w-[140px] z-0 opacity-40 cursor-pointer">
@@ -64,17 +64,17 @@ export const ContactSection = () => {
       <FadeIn y={40} className="relative z-10">
         <TypingHeading
           text="LET'S TALK"
-          className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 leading-none tracking-normal" 
+          className="hero-heading font-black uppercase text-center mb-10 sm:mb-14 md:mb-16 leading-none tracking-normal" 
           style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
         />
       </FadeIn>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 w-full max-w-[1400px] mt-4 sm:mt-10 relative z-10 px-0 sm:px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 w-full max-w-[1400px] mt-0 sm:mt-4 relative z-10 px-0 sm:px-4">
         
         {/* Left Column: Contact List */}
         <div className="flex flex-col w-full justify-start pt-4">
         <FadeIn delay={0.1} y={20} className="w-full">
-          <a href="mailto:work.mohargorai@gmail.com" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="mailto:work.mohargorai@gmail.com" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">01 // Email</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
@@ -87,7 +87,7 @@ export const ContactSection = () => {
         </FadeIn>
 
         <FadeIn delay={0.2} y={20} className="w-full">
-          <a href="tel:+917863995905" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="tel:+917863995905" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">02 // Phone</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
@@ -100,7 +100,7 @@ export const ContactSection = () => {
         </FadeIn>
 
         <FadeIn delay={0.3} y={20} className="w-full">
-          <a href="https://github.com/mohargorai" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="https://github.com/mohargorai" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">03 // GitHub</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
@@ -113,7 +113,7 @@ export const ContactSection = () => {
         </FadeIn>
 
         <FadeIn delay={0.4} y={20} className="w-full">
-          <a href="https://www.linkedin.com/in/mohar-gorai-518123338/" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="https://www.linkedin.com/in/mohar-gorai-518123338/" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">04 // LinkedIn</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
@@ -126,7 +126,7 @@ export const ContactSection = () => {
         </FadeIn>
 
         <FadeIn delay={0.5} y={20} className="w-full">
-          <a href="https://maps.app.goo.gl/5jYiP81FDqHyovsNA" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-6 sm:py-8 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
+          <a href="https://maps.app.goo.gl/5jYiP81FDqHyovsNA" target="_blank" rel="noreferrer" className="group flex flex-col items-start py-5 sm:py-6 border-b border-[#D7E2EA]/15 hover:border-[#D7E2EA]/60 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D7E2EA]/5 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out z-0 pointer-events-none"></div>
             <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-xs sm:text-sm font-bold mb-1 sm:mb-2 relative z-10 group-hover:text-[#D7E2EA]/80 transition-colors">05 // Location</span>
             <div className="flex items-center gap-3 sm:gap-6 relative z-10">
@@ -142,7 +142,7 @@ export const ContactSection = () => {
         {/* Right Column: Contact Form */}
         <div className="flex flex-col w-full">
           <FadeIn delay={0.6} y={20} className="w-full h-full">
-            <form onSubmit={handleSubmit} className="w-full h-full rounded-[30px] sm:rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-8 sm:p-12 flex flex-col gap-6 shadow-xl relative overflow-hidden group">
+            <form onSubmit={handleSubmit} className="w-full h-full rounded-[30px] sm:rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-6 sm:p-10 flex flex-col gap-6 shadow-xl relative overflow-hidden group">
               <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#D7E2EA]/5 rounded-full blur-3xl z-0 pointer-events-none group-focus-within:bg-[#D7E2EA]/10 transition-colors duration-700"></div>
               
               <h3 className="text-[#D7E2EA] font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-widest relative z-10 mb-4">Send a Message</h3>
