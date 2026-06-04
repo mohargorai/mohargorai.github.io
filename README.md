@@ -94,7 +94,7 @@ To get a local copy up and running, follow these simple steps.
 ## 📫 Contact
 
 **Mohar Gorai**  
-Sophomore at Vellore Institute of Technology, pursuing B.Tech in IT.
+Junior at Vellore Institute of Technology, pursuing B.Tech in IT.
 
 - **Email:** [work.mohargorai@gmail.com](mailto:work.mohargorai@gmail.com)
 - **LinkedIn:** [linkedin.com/in/mohar-gorai](https://www.linkedin.com/in/mohar-gorai-518123338/)

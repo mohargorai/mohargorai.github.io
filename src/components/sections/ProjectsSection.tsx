@@ -33,7 +33,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 py-20 pb-20 overflow-hidden">
+    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden">
       
       {/* Decorative 3D Images */}
       <FadeIn delay={0.2} duration={0.9} x={-60} y={0} className="absolute top-[10%] left-[1%] sm:left-[3%] md:left-[5%] w-[100px] sm:w-[140px] md:w-[180px] z-0 opacity-80">

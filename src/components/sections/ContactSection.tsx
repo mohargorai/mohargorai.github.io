@@ -36,7 +36,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="min-h-[80vh] flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 py-20 pb-20 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
+    <section id="contact" className="flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 pt-24 pb-32 sm:pt-32 sm:pb-40 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
       
       {/* Decorative 3D Images */}
       <FadeIn delay={0.1} duration={0.9} x={-60} y={0} className="hidden lg:block absolute top-[10%] left-[2%] w-[100px] xl:w-[140px] z-0 opacity-40 cursor-pointer">

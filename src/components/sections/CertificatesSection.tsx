@@ -51,7 +51,7 @@ export const CertificatesSection = () => {
   }, [hoveredIndex, opacity, scale]);
 
   return (
-    <section id="certificates" className="bg-[#121316] min-h-screen flex flex-col py-20 pb-20 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
+    <section id="certificates" className="bg-[#121316] flex flex-col pt-24 pb-32 sm:pt-32 sm:pb-40 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
       
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
