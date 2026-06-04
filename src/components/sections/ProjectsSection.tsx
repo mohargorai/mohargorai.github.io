@@ -81,7 +81,7 @@ export const ProjectsSection = () => {
              
              <div className="w-full overflow-x-auto pb-4 flex justify-center">
                <img 
-                 src="https://ghchart.rshah.org/mohargorai" 
+                 src="https://ghchart.rshah.org/A855F7/mohargorai" 
                  alt="mohargorai's Github Contribution Chart" 
                  className="w-full min-w-[700px] max-w-[900px] h-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
                />
