@@ -136,36 +136,56 @@ export const CertificatesSection = () => {
         }}
       >
         {/* Pre-render all images and PDFs and toggle opacity for instant swapping */}
-        {certificates.map((cert, index) => (
-          <div 
-            key={index} 
-            className={`absolute inset-0 w-full h-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-center ${hoveredIndex === index ? 'opacity-100 scale-100 rotate-0 z-10' : 'opacity-0 scale-[0.85] -rotate-3 z-0'}`}
-          >
-            {cert.image ? (
-              <img src={cert.image} alt={cert.title} className="w-full h-full object-cover" />
-            ) : cert.pdf ? (
-               <div className="w-full h-full bg-white relative overflow-hidden flex items-center justify-center">
-                 <div className="absolute inset-0 flex items-center justify-center w-full h-full scale-[1.05]">
-                   <Document 
-                     file={cert.pdf} 
-                     loading={<div className="w-full h-full bg-white absolute inset-0" />}
-                     className="flex items-center justify-center w-full h-full"
-                   >
-                     <Page 
-                       pageNumber={1} 
-                       width={400} 
-                       renderTextLayer={false} 
-                       renderAnnotationLayer={false}
-                     />
-                   </Document>
-                 </div>
-               </div>
-            ) : null}
-            
-            {/* Soft inner shadow overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none rounded-[24px]"></div>
-          </div>
-        ))}
+        {certificates.map((cert, index) => {
+          const isActive = hoveredIndex === index;
+          
+          return (
+            <div key={index} className={`absolute inset-0 w-full h-full ${isActive ? 'z-10' : 'z-0 pointer-events-none'}`}>
+              {[0, 1, 2, 3].map(i => {
+                const delay = i * 60; // 60ms stagger per slice
+                // Alternate directions for the offset glitch effect
+                const yOffset = i % 2 === 0 ? '100%' : '-100%';
+                
+                return (
+                  <div 
+                    key={i}
+                    className="absolute inset-0 w-full h-full will-change-transform"
+                    style={{
+                      clipPath: `inset(0 ${100 - (i+1)*25}% 0 ${i*25}%)`,
+                      transition: `transform 750ms cubic-bezier(0.23, 1, 0.32, 1) ${delay}ms, opacity 400ms ease ${delay}ms`,
+                      transform: isActive ? 'translateY(0) scale(1)' : `translateY(${yOffset}) scale(1.1)`,
+                      opacity: isActive ? 1 : 0
+                    }}
+                  >
+                    {cert.image ? (
+                      <img src={cert.image} alt={cert.title} className="w-full h-full object-cover" />
+                    ) : cert.pdf ? (
+                       <div className="w-full h-full bg-white relative overflow-hidden flex items-center justify-center">
+                         <div className="absolute inset-0 flex items-center justify-center w-full h-full scale-[1.05]">
+                           <Document 
+                             file={cert.pdf} 
+                             loading={<div className="w-full h-full bg-white absolute inset-0" />}
+                             className="flex items-center justify-center w-full h-full"
+                           >
+                             <Page 
+                               pageNumber={1} 
+                               width={400} 
+                               renderTextLayer={false} 
+                               renderAnnotationLayer={false}
+                             />
+                           </Document>
+                         </div>
+                       </div>
+                    ) : null}
+                    
+                    {/* Soft inner shadow overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
       </motion.div>
       
     </section>
