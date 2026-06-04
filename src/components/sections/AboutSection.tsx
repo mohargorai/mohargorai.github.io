@@ -61,7 +61,7 @@ export const AboutSection = () => {
 
         <div className="mt-16 sm:mt-20 md:mt-24 w-full flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10">
           {/* Education Card */}
-          <FadeIn delay={0.1} y={30} className="w-full lg:w-[60%] z-10">
+          <FadeIn delay={0.1} y={30} className="w-full lg:w-1/2 z-10">
             <div className="w-full h-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-6 sm:p-8 md:p-10 shadow-2xl relative hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.01] hover:shadow-[0_10px_30px_rgba(215,226,234,0.08)] hover:bg-[#121316]/60 transition-all duration-300">
               <h3 className="font-black text-[#D7E2EA] uppercase text-2xl sm:text-3xl mb-8">Academic Background</h3>
               <div className="flex flex-col">
@@ -85,7 +85,7 @@ export const AboutSection = () => {
           </FadeIn>
 
           {/* Languages Card */}
-          <FadeIn delay={0.2} y={30} className="w-full lg:w-[40%] z-10">
+          <FadeIn delay={0.2} y={30} className="w-full lg:w-1/2 z-10">
             <div className="w-full h-full rounded-[30px] sm:rounded-[40px] md:rounded-[50px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-6 sm:p-8 md:p-10 shadow-2xl relative hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.01] hover:shadow-[0_10px_30px_rgba(215,226,234,0.08)] hover:bg-[#121316]/60 transition-all duration-300">
               <h3 className="font-black text-[#D7E2EA] uppercase text-2xl sm:text-3xl mb-8">Lingual Proficiency</h3>
               <ul className="flex flex-col gap-4 sm:gap-6">
