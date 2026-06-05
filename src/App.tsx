@@ -19,8 +19,8 @@ function App() {
       <ProjectsSection />
       <CertificatesSection />
       <ContactSection />
-      <footer className="text-center py-8 text-[#D7E2EA]/50 text-sm bg-[#121316] relative z-30">
-         © {new Date().getFullYear()} Mohar Gorai. All rights reserved.
+      <footer className="text-center py-8 text-[#D7E2EA]/50 text-sm bg-[#121316] relative z-30 font-medium tracking-wide">
+         Designed & Built by Mohar Gorai
       </footer>
     </main>
   );
