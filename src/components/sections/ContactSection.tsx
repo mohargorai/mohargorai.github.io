@@ -40,7 +40,7 @@ export const ContactSection = () => {
       
       <div className="px-5 sm:px-8 md:px-10 mb-16 sm:mb-20 md:mb-24 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center mt-4 lg:mt-8">
         <FadeIn y={40} className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-          <div className="relative w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px] aspect-[1/2] z-0 shrink-0 hidden sm:block">
+          <div className="relative w-[100px] sm:w-[130px] md:w-[160px] lg:w-[190px] xl:w-[220px] aspect-[1/2] z-0 shrink-0 hidden sm:block">
             <SquishBounce>
               <motion.div 
                 animate={{ 
