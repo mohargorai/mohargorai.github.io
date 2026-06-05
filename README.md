@@ -34,7 +34,7 @@ The site steps away from traditional flat designs and embraces a modern **Dark G
 
 ## 💻 Tech Stack
 
-- **Framework:** [React 18](https://react.dev/)
+- **Framework:** [React 19](https://react.dev/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Bundler:** [Vite](https://vitejs.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
