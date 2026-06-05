@@ -22,7 +22,7 @@ export const SquishBounce = ({ children, className = '' }: { children: React.Rea
       className={className}
       animate={controls}
       onMouseEnter={handlePoke}
-      style={{ cursor: 'pointer', display: 'inline-block', width: '100%', height: '100%' }}
+      style={{ display: 'inline-block', width: '100%', height: '100%' }}
     >
       {children}
     </motion.div>
