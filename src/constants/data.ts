@@ -118,5 +118,12 @@ export const certificates = [
     date: "Sep 2025",
     pdf: `${import.meta.env.BASE_URL}certificates/eCertificate.pdf`,
     link: `${import.meta.env.BASE_URL}certificates/eCertificate.pdf`
+  },
+  {
+    title: "Unlocking AI for Everyone (Beginner)",
+    issuer: "Microsoft & Skill India",
+    date: "Mar 2026",
+    pdf: `${import.meta.env.BASE_URL}certificates/certificate_658a7e4d-dadd-4922-8f22-9593b904f690.pdf`,
+    link: `${import.meta.env.BASE_URL}certificates/certificate_658a7e4d-dadd-4922-8f22-9593b904f690.pdf`
   }
 ];
