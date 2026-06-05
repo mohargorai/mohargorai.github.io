@@ -38,36 +38,38 @@ export const ContactSection = () => {
   return (
     <section id="contact" className="flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 pt-24 pb-32 sm:pt-32 sm:pb-40 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
       
-      {/* Decorative 3D Images */}
-      <FadeIn delay={0.1} duration={0.9} x={-60} y={0} className="hidden lg:block absolute top-[10%] left-[2%] w-[100px] xl:w-[140px] z-0 opacity-40 cursor-pointer">
-        <SquishBounce>
-          <motion.div 
-            animate={{ 
-              y: [0, -30, 0], 
-              x: [0, 15, -5, 0],
-              rotateZ: [0, 8, -4, 0],
-              rotateY: [0, 20, -20, 0]
-            }} 
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            style={{ perspective: 1000 }}
-          >
-            <img src={`${import.meta.env.BASE_URL}img/glass_phone.png`} alt="Glass Phone" className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(215,226,234,0.2)]" />
-          </motion.div>
-        </SquishBounce>
-      </FadeIn>
-
-
-      <FadeIn y={40} className="relative z-10">
-        <TypingHeading
-          text="LET'S TALK"
-          className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-24 leading-none tracking-normal" 
-          style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
-        />
-      </FadeIn>
+      <div className="px-5 sm:px-8 md:px-10 mb-16 sm:mb-20 md:mb-24 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center mt-4 lg:mt-8">
+        <FadeIn y={40} className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+          <div className="relative w-[80px] sm:w-[100px] md:w-[120px] lg:w-[140px] aspect-[1/2] z-0 shrink-0 hidden sm:block">
+            <SquishBounce>
+              <motion.div 
+                animate={{ 
+                  y: [0, -20, 0], 
+                  rotateZ: [0, 8, -4, 0],
+                  rotateY: [0, 15, -15, 0]
+                }} 
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                style={{ perspective: 1000 }}
+              >
+                <img 
+                  src={`${import.meta.env.BASE_URL}img/glass_phone.png`} 
+                  alt="Glass Phone" 
+                  className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(215,226,234,0.2)]" 
+                />
+              </motion.div>
+            </SquishBounce>
+          </div>
+          <TypingHeading
+            text="LET'S TALK"
+            className="hero-heading font-black uppercase text-center sm:text-left mb-0 leading-none tracking-normal" 
+            style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
+          />
+        </FadeIn>
+      </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 w-full max-w-[1400px] mt-0 sm:mt-4 relative z-10 px-0 sm:px-4">
         
