@@ -54,6 +54,7 @@ The codebase is organized following enterprise React patterns to maximize scalab
 │   ├── /sections   # Heavy, stateful page segments (Hero, About, Projects)
 │   └── /ui         # Pure, reusable atomic elements (Buttons, FadeIn, Magnet)
 ├── /constants      # Centralized data stores (projects, certificates, services)
+├── /types          # TypeScript interfaces and type definitions
 ├── App.tsx         # Root component aggregator
 ├── index.css       # Tailwind directives and global variables
 └── main.tsx        # React DOM mount point
