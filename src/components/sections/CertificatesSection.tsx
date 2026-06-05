@@ -11,6 +11,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isHoverDevice, setIsHoverDevice] = useState(true);
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
@@ -21,6 +22,11 @@ export const CertificatesSection = () => {
   const scale = useSpring(0.8, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
+    const hoverCheck = window.matchMedia('(hover: hover)').matches;
+    setIsHoverDevice(hoverCheck);
+
+    if (!hoverCheck) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -41,6 +47,8 @@ export const CertificatesSection = () => {
   }, [cursorX, cursorY]);
 
   useEffect(() => {
+    if (!isHoverDevice) return;
+    
     if (hoveredIndex !== null) {
       opacity.set(1);
       scale.set(1);
@@ -48,7 +56,7 @@ export const CertificatesSection = () => {
       opacity.set(0);
       scale.set(0.8);
     }
-  }, [hoveredIndex, opacity, scale]);
+  }, [hoveredIndex, opacity, scale, isHoverDevice]);
 
   return (
     <section id="certificates" className="bg-[#121316] flex flex-col pt-24 pb-32 sm:pt-32 sm:pb-40 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
@@ -94,8 +102,8 @@ export const CertificatesSection = () => {
               target="_blank" 
               rel="noopener noreferrer" 
               className="group block relative border-b border-white/10 py-5 sm:py-6 transition-all duration-500 hover:border-[#D7E2EA]/40 cursor-pointer"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              onMouseEnter={() => isHoverDevice && setHoveredIndex(index)}
+              onMouseLeave={() => isHoverDevice && setHoveredIndex(null)}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4">
                 
