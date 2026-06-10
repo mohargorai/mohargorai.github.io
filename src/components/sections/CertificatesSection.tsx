@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, useSpring } from 'framer-motion';
-import { FadeIn, TypingHeading, SquishBounce } from '../ui';
+import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
 import { pdfjs } from 'react-pdf';
 
 // Lazy load heavy PDF components
@@ -156,10 +156,10 @@ export const CertificatesSection = () => {
             ) : cert.pdf ? (
                <div className="w-full h-full bg-white relative overflow-hidden flex items-center justify-center">
                  <div className="absolute inset-0 flex items-center justify-center w-full h-full scale-[1.05]">
-                   <Suspense fallback={<div className="w-full h-full bg-white absolute inset-0" />}>
+                   <Suspense fallback={<Skeleton className="w-full h-full rounded-none" />}>
                      <Document 
                        file={cert.pdf} 
-                       loading={<div className="w-full h-full bg-white absolute inset-0" />}
+                       loading={<Skeleton className="w-full h-full rounded-none" />}
                        className="flex items-center justify-center w-full h-full"
                      >
                        <Page 
