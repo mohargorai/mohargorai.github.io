@@ -1,10 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { TypingHeading } from '../ui/TypingHeading';
-import { SquishBounce } from '../ui/SquishBounce';
-import { LiveProjectButton } from '../ui/LiveProjectButton';
-import { projects } from '../../constants/data';
+import { FadeIn, TypingHeading, SquishBounce, LiveProjectButton } from '../ui';
+import { projects } from '../../data/projects';
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0], index: number }) => {
   return (

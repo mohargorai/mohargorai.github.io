@@ -1,0 +1,28 @@
+import { Project } from '../types';
+
+export const projects: Project[] = [
+  {
+    num: "01",
+    cat: "Web & Application",
+    title: "Appointment Booking App",
+    description: "A robust online platform engineered to handle secure scheduling, client management, and appointment tracking efficiently.",
+    link: "https://github.com/mohargorai/Online-Appointment-Booking-App",
+    liveLink: "",
+  },
+  {
+    num: "02",
+    cat: "Hackathon Project (SAH)",
+    title: "AI Resume Scoring",
+    description: "An automated resume evaluation tool developed during the SAH hackathon to parse, score, and rank candidate profiles based on given criteria.",
+    link: "https://github.com/mohargorai/SAH_hackathon_ResumeScoring",
+    liveLink: "https://queryengine.vercel.app/",
+  },
+  {
+    num: "03",
+    cat: "Full-Stack",
+    title: "Ticket Booking System",
+    description: "A comprehensive full-stack web application designed for seamless booking, secure transactions, and efficient ticket management.",
+    link: "https://github.com/mohargorai/ticketing-system---project",
+    liveLink: "https://ticketing-system-project.onrender.com/",
+  }
+];

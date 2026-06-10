@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { TypingHeading } from '../ui/TypingHeading';
-import { SquishBounce } from '../ui/SquishBounce';
+import { FadeIn, TypingHeading, SquishBounce } from '../ui';
 
 export const ContactSection = () => {
   const [status, setStatus] = useState<"IDLE" | "SUBMITTING" | "SUCCESS" | "ERROR">("IDLE");

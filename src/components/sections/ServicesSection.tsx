@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { SquishBounce } from '../ui/SquishBounce';
-import { TypingHeading } from '../ui/TypingHeading';
-import { services } from '../../constants/data';
+import { FadeIn, SquishBounce, TypingHeading } from '../ui';
+import { services } from '../../data/services';
 
 export const ServicesSection = () => {
   return (

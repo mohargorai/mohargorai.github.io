@@ -1,11 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { DownloadCVButton } from '../ui/DownloadCVButton';
-import { ContactButton } from '../ui/ContactButton';
-import { Magnet } from '../ui/Magnet';
-import { ScrambleText } from '../ui/ScrambleText';
-
+import { FadeIn, DownloadCVButton, ContactButton, Magnet, ScrambleText } from '../ui';
 export const HeroSection = () => {
   return (
     <section className="h-screen w-full flex flex-col overflow-x-clip relative">

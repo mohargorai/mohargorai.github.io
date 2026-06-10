@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, useSpring } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { TypingHeading } from '../ui/TypingHeading';
-import { SquishBounce } from '../ui/SquishBounce';
-import { Document, Page, pdfjs } from 'react-pdf';
-import { certificates } from '../../constants/data';
+import { FadeIn, TypingHeading, SquishBounce } from '../ui';
+import { pdfjs } from 'react-pdf';
+
+// Lazy load heavy PDF components
+const Document = React.lazy(() => import('react-pdf').then(m => ({ default: m.Document })));
+const Page = React.lazy(() => import('react-pdf').then(m => ({ default: m.Page })));
+import { certificates } from '../../data/certificates';
 
 // Configure the worker for PDF.js using a CDN to avoid build issues
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -154,18 +156,20 @@ export const CertificatesSection = () => {
             ) : cert.pdf ? (
                <div className="w-full h-full bg-white relative overflow-hidden flex items-center justify-center">
                  <div className="absolute inset-0 flex items-center justify-center w-full h-full scale-[1.05]">
-                   <Document 
-                     file={cert.pdf} 
-                     loading={<div className="w-full h-full bg-white absolute inset-0" />}
-                     className="flex items-center justify-center w-full h-full"
-                   >
-                     <Page 
-                       pageNumber={1} 
-                       width={400} 
-                       renderTextLayer={false} 
-                       renderAnnotationLayer={false}
-                     />
-                   </Document>
+                   <Suspense fallback={<div className="w-full h-full bg-white absolute inset-0" />}>
+                     <Document 
+                       file={cert.pdf} 
+                       loading={<div className="w-full h-full bg-white absolute inset-0" />}
+                       className="flex items-center justify-center w-full h-full"
+                     >
+                       <Page 
+                         pageNumber={1} 
+                         width={400} 
+                         renderTextLayer={false} 
+                         renderAnnotationLayer={false}
+                       />
+                     </Document>
+                   </Suspense>
                  </div>
                </div>
             ) : null}

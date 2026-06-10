@@ -1,9 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '../ui/FadeIn';
-import { AnimatedText } from '../ui/AnimatedText';
-import { TypingHeading } from '../ui/TypingHeading';
-import { SquishBounce } from '../ui/SquishBounce';
+import { FadeIn, AnimatedText, TypingHeading, SquishBounce } from '../ui';
 
 export const AboutSection = () => {
   return (
