@@ -14,7 +14,7 @@ export const TypingHeading: React.FC<TypingHeadingProps> = ({ text, className, s
       style={style}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: "-10%" }}
+      viewport={{ once: true, margin: "100px" }}
     >
       {Array.from(text).map((char, index) => (
         <motion.span

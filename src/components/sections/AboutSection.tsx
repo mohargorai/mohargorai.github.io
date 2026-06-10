@@ -4,7 +4,7 @@ import { FadeIn, AnimatedText, TypingHeading, SquishBounce } from '../ui';
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="relative z-20 flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden">
+    <section id="about" className="content-auto relative z-20 flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden">
       
       {/* Decorative 3D Images */}
       <FadeIn delay={0.1} duration={0.9} x={-80} y={0} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px] z-0">

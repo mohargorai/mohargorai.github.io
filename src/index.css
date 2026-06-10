@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+}
+
 @layer base {
   *, ::before, ::after {
     box-sizing: border-box;
