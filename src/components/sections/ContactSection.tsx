@@ -175,6 +175,9 @@ export const ContactSection = () => {
                     <textarea name="message" required rows={5} className="w-full h-[calc(100%-2rem)] bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors resize-none" placeholder="Hi!!"></textarea>
                   </div>
 
+                  {/* Web3Forms Honeypot - Invisible to humans, catches bots */}
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                   <button type="submit" disabled={status === "SUBMITTING" || status === "SUCCESS"} className="relative z-10 w-full rounded-full border-2 border-[#D7E2EA] text-[#0C0C0C] bg-[#D7E2EA] font-black uppercase tracking-widest px-8 py-5 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-4 shadow-[0_0_20px_rgba(215,226,234,0.3)] hover:shadow-none">
                     {status === "IDLE" && "Send Message"}
                     {status === "SUBMITTING" && "Sending..."}
