@@ -41,7 +41,7 @@ The site steps away from traditional flat designs and embraces a modern **Dark G
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
 - **PDF Rendering:** [React PDF](https://github.com/wojtekmaj/react-pdf)
-- **Forms:** [Web3Forms API](https://web3forms.com/)
+- **Forms & Security:** [Web3Forms API](https://web3forms.com/) with built-in Honeypot bot-protection.
 
 ---
 
