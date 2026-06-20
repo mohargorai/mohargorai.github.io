@@ -24,10 +24,10 @@ The site steps away from traditional flat designs and embraces a modern **Dark G
 
 ### ✨ Key Features
 
-- **Extreme Performance:** Bypasses heavy React state updates for animations by utilizing raw `framer-motion` `useMotionValue` and `useSpring` hooks to maintain a solid 60FPS.
-- **Custom Lighting Engine:** Features a bespoke background spotlight and a frosted-glass cursor with dynamic color-inverting `mix-blend-mode` logic.
+- **Extreme Performance:** Bypasses heavy React state updates for animations by utilizing raw `framer-motion` `useMotionValue` and `useSpring` hooks. Includes lazy-loading boundaries to drastically reduce initial bundle size (e.g. dynamic imports for heavy dependencies like `react-pdf`).
+- **Advanced Cursor Mechanics:** Features a bespoke background spotlight and a frosted-glass custom cursor, alongside a GSAP-powered target cursor that magnetically snaps to specific UI elements (like coding skill tags).
+- **Glassmorphic UI Design:** Features beautifully customized glowing cards powered by sophisticated math to calculate edge proximity and render dynamic, tracking hover glows around borders.
 - **Enterprise Architecture:** Structurally sound architecture separating atomic UI components from heavy layout sections and data constants.
-- **Interactive Typography:** Awwwards-style staggered typography reveals and buttery smooth image-following hover states.
 - **Fully Responsive:** Painstakingly crafted `clamp()` typography and flex layouts that look flawless from 4k monitors down to small mobile screens.
 
 ---
@@ -38,7 +38,8 @@ The site steps away from traditional flat designs and embraces a modern **Dark G
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Bundler:** [Vite](https://vitejs.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
+- **PDF Rendering:** [React PDF](https://github.com/wojtekmaj/react-pdf)
 - **Forms:** [Web3Forms API](https://web3forms.com/)
 
 ---
