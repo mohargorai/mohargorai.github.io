@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHoverDevice, setIsHoverDevice] = useState(true);
+  const [isHoverDevice, setIsHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
 
   // Mouse position values
   const cursorX = useMotionValue(-100);
@@ -21,10 +21,7 @@ export const CustomCursor = () => {
 
   useEffect(() => {
     // Check if device supports hover (PC)
-    const hoverCheck = window.matchMedia('(hover: hover)').matches;
-    setIsHoverDevice(hoverCheck);
-
-    if (!hoverCheck) return; // Don't attach listeners on touch devices
+    if (!isHoverDevice) return; // Don't attach listeners on touch devices
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);

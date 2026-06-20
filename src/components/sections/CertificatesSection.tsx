@@ -1,17 +1,14 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
-// Lazy load heavy PDF components and configure worker
-const Document = React.lazy(() => import('react-pdf').then(m => {
-  m.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${m.pdfjs.version}/build/pdf.worker.min.mjs`;
-  return { default: m.Document };
-}));
-const Page = React.lazy(() => import('react-pdf').then(m => ({ default: m.Page })));
 import { certificates } from '../../data/certificates';
+
+// Lazy load the PDF viewer to properly code-split the heavy react-pdf library
+const PDFViewer = React.lazy(() => import('../ui/PDFViewer'));
 
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isHoverDevice, setIsHoverDevice] = useState(true);
+  const [isHoverDevice, setIsHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
@@ -22,10 +19,7 @@ export const CertificatesSection = () => {
   const scale = useSpring(0.8, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
-    const hoverCheck = window.matchMedia('(hover: hover)').matches;
-    setIsHoverDevice(hoverCheck);
-
-    if (!hoverCheck) return;
+    if (!isHoverDevice) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       cursorX.set(e.clientX);
@@ -155,18 +149,11 @@ export const CertificatesSection = () => {
                <div className="w-full h-full bg-white relative overflow-hidden flex items-center justify-center">
                  <div className="absolute inset-0 flex items-center justify-center w-full h-full scale-[1.05]">
                    <Suspense fallback={<Skeleton className="w-full h-full rounded-none" />}>
-                     <Document 
+                     <PDFViewer 
                        file={cert.pdf} 
-                       loading={<Skeleton className="w-full h-full rounded-none" />}
-                       className="flex items-center justify-center w-full h-full"
-                     >
-                       <Page 
-                         pageNumber={1} 
-                         width={400} 
-                         renderTextLayer={false} 
-                         renderAnnotationLayer={false}
-                       />
-                     </Document>
+                       pageNumber={1}
+                       width={400}
+                     />
                    </Suspense>
                  </div>
                </div>
