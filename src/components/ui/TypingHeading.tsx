@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface TypingHeadingProps {
@@ -8,12 +8,21 @@ interface TypingHeadingProps {
 }
 
 export const TypingHeading: React.FC<TypingHeadingProps> = ({ text, className, style }) => {
+  const [appLoaded, setAppLoaded] = useState(() => (typeof window !== 'undefined' && (window as unknown as { isAppLoaded?: boolean }).isAppLoaded) || false);
+
+  useEffect(() => {
+    if (appLoaded) return;
+    const handleLoad = () => setAppLoaded(true);
+    window.addEventListener('appLoaded', handleLoad);
+    return () => window.removeEventListener('appLoaded', handleLoad);
+  }, [appLoaded]);
+
   return (
     <motion.h2
       className={className}
       style={style}
       initial="hidden"
-      whileInView="visible"
+      whileInView={appLoaded ? "visible" : "hidden"}
       viewport={{ once: false, margin: "-10%" }}
     >
       {Array.from(text).map((char, index) => (

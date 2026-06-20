@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText } from '../ui';
+
 export const HeroSection = () => {
+  const [appLoaded, setAppLoaded] = useState(() => (typeof window !== 'undefined' && (window as unknown as { isAppLoaded?: boolean }).isAppLoaded) || false);
+
+  useEffect(() => {
+    if (appLoaded) return;
+    const handleLoad = () => setAppLoaded(true);
+    window.addEventListener('appLoaded', handleLoad);
+    return () => window.removeEventListener('appLoaded', handleLoad);
+  }, [appLoaded]);
   return (
     <section className="h-screen w-full flex flex-col overflow-x-clip relative">
       {/* Navbar */}
@@ -27,8 +36,8 @@ export const HeroSection = () => {
               <motion.span
                 key={index}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0, delay: 0.3 + index * 0.1 }}
+                animate={appLoaded ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
               >
                 {char === ' ' ? '\u00A0' : char}
               </motion.span>
