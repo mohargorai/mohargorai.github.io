@@ -11,3 +11,4 @@ export * from './DownloadCVButton';
 export * from './Skeleton';
 export * from './BorderGlow';
 export { default as TargetCursor } from './TargetCursor';
+export { default as TiltedCard } from './TiltedCard';

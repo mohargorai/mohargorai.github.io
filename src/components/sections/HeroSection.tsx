@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn, DownloadCVButton, ContactButton, Magnet, ScrambleText } from '../ui';
+import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText } from '../ui';
 export const HeroSection = () => {
   return (
     <section className="h-screen w-full flex flex-col overflow-x-clip relative">
@@ -69,15 +69,20 @@ export const HeroSection = () => {
 
       <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 w-[160px] sm:w-[220px] md:w-[320px] lg:w-[400px] top-1/2 -translate-y-1/2 pointer-events-none sm:pointer-events-auto">
         <Magnet padding={150} strength={3}>
-          <div className="w-full aspect-square rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-2 border-[#D7E2EA]/20">
-            <img 
-              src={`${import.meta.env.BASE_URL}img/profile.jpg`} 
-              alt="Mohar Gorai" 
-              className="w-full h-full object-cover"
-              style={{ 
-                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)', 
-                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)' 
-              }}
+          <div className="w-full aspect-square rounded-full border-2 border-[#D7E2EA]/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <TiltedCard
+              imageSrc={`${import.meta.env.BASE_URL}img/profile.jpg`}
+              altText="Mohar Gorai"
+              captionText="Mohar Gorai"
+              containerHeight="100%"
+              containerWidth="100%"
+              imageHeight="100%"
+              imageWidth="100%"
+              rotateAmplitude={12}
+              scaleOnHover={1.05}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={false}
             />
           </div>
         </Magnet>
