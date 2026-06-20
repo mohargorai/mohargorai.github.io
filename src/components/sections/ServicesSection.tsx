@@ -51,7 +51,7 @@ export const ServicesSection = () => {
                 </h3>
                 <div className="flex flex-wrap gap-2 z-10">
                   {svc.skills.map(skill => (
-                    <span key={skill} className="px-3 py-1.5 bg-[#D7E2EA]/5 hover:bg-[#D7E2EA]/15 border border-[#D7E2EA]/10 rounded-full text-xs sm:text-sm text-[#D7E2EA]/80 font-medium transition-colors cursor-default">
+                    <span key={skill} className="cursor-target px-3 py-1.5 bg-[#D7E2EA]/5 hover:bg-[#D7E2EA]/15 border border-[#D7E2EA]/10 rounded-full text-xs sm:text-sm text-[#D7E2EA]/80 font-medium transition-colors cursor-default">
                       {skill}
                     </span>
                   ))}

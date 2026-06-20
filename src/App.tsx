@@ -1,11 +1,18 @@
 import React from 'react';
 import { HeroSection, AboutSection, ServicesSection, ProjectsSection, CertificatesSection, ContactSection } from './components/sections';
-import { CustomCursor } from './components/ui';
+import { CustomCursor, TargetCursor } from './components/ui';
 import { FloatingNavbar } from './components/layout';
+
 function App() {
   return (
     <main className="w-full bg-[#0C0C0C] font-sans overflow-x-clip text-[#D7E2EA]">
       <CustomCursor />
+      <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={false}
+        parallaxOn
+        hoverDuration={0.2}
+      />
       <FloatingNavbar />
       <HeroSection />
       <AboutSection />

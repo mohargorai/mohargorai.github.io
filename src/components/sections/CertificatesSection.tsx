@@ -8,7 +8,7 @@ const PDFViewer = React.lazy(() => import('../ui/PDFViewer'));
 
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isHoverDevice, setIsHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
+  const [isHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
@@ -38,7 +38,7 @@ export const CertificatesSection = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isHoverDevice]);
 
   useEffect(() => {
     if (!isHoverDevice) return;

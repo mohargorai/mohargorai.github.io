@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHoverDevice, setIsHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
+  const [isHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
 
   // Mouse position values
   const cursorX = useMotionValue(-100);
@@ -41,7 +41,7 @@ export const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY, isHoverDevice]);
 
   if (!isHoverDevice || !isVisible) return null;
 
