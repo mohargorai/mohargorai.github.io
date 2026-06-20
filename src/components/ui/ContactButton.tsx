@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrambleText } from './ScrambleText';
 
 export const ContactButton = () => {
   return (
@@ -22,7 +23,7 @@ export const ContactButton = () => {
            outlineOffset: '-3px'
          }}
       >
-        Contact Me
+        <ScrambleText text="Contact Me" />
       </a>
     </>
   );
