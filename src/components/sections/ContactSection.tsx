@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn, TypingHeading, SquishBounce } from '../ui';
+import { FadeIn, TypingHeading, SquishBounce, BorderGlow } from '../ui';
 
 export const ContactSection = () => {
   const [status, setStatus] = useState<"IDLE" | "SUBMITTING" | "SUCCESS" | "ERROR">("IDLE");
@@ -142,51 +142,66 @@ export const ContactSection = () => {
         {/* Right Column: Contact Form */}
         <div className="flex flex-col w-full">
           <FadeIn delay={0.6} y={20} className="w-full h-full">
-            <form onSubmit={handleSubmit} className="w-full h-full rounded-[30px] sm:rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C]/40 backdrop-blur-md p-6 sm:p-10 flex flex-col gap-6 shadow-xl relative overflow-hidden group">
-              <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#D7E2EA]/5 rounded-full blur-3xl z-0 pointer-events-none group-focus-within:bg-[#D7E2EA]/10 transition-colors duration-700"></div>
-              
-              <h3 className="text-[#D7E2EA] font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-widest relative z-10 mb-4">Send a Message</h3>
-              
-              <div className="relative z-10">
-                <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Name</label>
-                <input type="text" name="name" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="Mohar Gorai" />
-              </div>
+            <form onSubmit={handleSubmit} className="w-full h-full">
+              <BorderGlow
+                edgeSensitivity={30}
+                glowColor="205 27 88"
+                backgroundColor="#0C0C0C"
+                borderRadius={40}
+                glowRadius={40}
+                glowIntensity={1}
+                coneSpread={25}
+                animated={false}
+                colors={['#D7E2EA', '#ffffff', '#D7E2EA']}
+                className="w-full h-full shadow-xl group"
+              >
+                <div className="flex flex-col gap-6 w-full h-full p-6 sm:p-10 relative">
+                  <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#D7E2EA]/5 rounded-full blur-3xl z-0 pointer-events-none group-focus-within:bg-[#D7E2EA]/10 transition-colors duration-700"></div>
+                  
+                  <h3 className="text-[#D7E2EA] font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-widest relative z-10 mb-4">Send a Message</h3>
+                  
+                  <div className="relative z-10">
+                    <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Name</label>
+                    <input type="text" name="name" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="Mohar Gorai" />
+                  </div>
 
-              <div className="relative z-10">
-                <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Email</label>
-                <input type="email" name="email" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="work.mohargorai@gmail.com" />
-              </div>
+                  <div className="relative z-10">
+                    <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Email</label>
+                    <input type="email" name="email" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="work.mohargorai@gmail.com" />
+                  </div>
 
-              <div className="relative z-10 flex-grow">
-                <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Message</label>
-                <textarea name="message" required rows={5} className="w-full h-[calc(100%-2rem)] bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors resize-none" placeholder="Hi!!"></textarea>
-              </div>
+                  <div className="relative z-10 flex-grow">
+                    <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Message</label>
+                    <textarea name="message" required rows={5} className="w-full h-[calc(100%-2rem)] bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors resize-none" placeholder="Hi!!"></textarea>
+                  </div>
 
-              <button type="submit" disabled={status === "SUBMITTING" || status === "SUCCESS"} className="relative z-10 w-full rounded-full border-2 border-[#D7E2EA] text-[#0C0C0C] bg-[#D7E2EA] font-black uppercase tracking-widest px-8 py-5 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-4 shadow-[0_0_20px_rgba(215,226,234,0.3)] hover:shadow-none">
-                {status === "IDLE" && "Send Message"}
-                {status === "SUBMITTING" && "Sending..."}
-                {status === "SUCCESS" && "Send Message"}
-                {status === "ERROR" && "Send Message"}
-              </button>
+                  <button type="submit" disabled={status === "SUBMITTING" || status === "SUCCESS"} className="relative z-10 w-full rounded-full border-2 border-[#D7E2EA] text-[#0C0C0C] bg-[#D7E2EA] font-black uppercase tracking-widest px-8 py-5 text-sm sm:text-base hover:bg-transparent hover:text-[#D7E2EA] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-4 shadow-[0_0_20px_rgba(215,226,234,0.3)] hover:shadow-none">
+                    {status === "IDLE" && "Send Message"}
+                    {status === "SUBMITTING" && "Sending..."}
+                    {status === "SUCCESS" && "Send Message"}
+                    {status === "ERROR" && "Send Message"}
+                  </button>
 
-              {status === "SUCCESS" && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 font-bold text-center text-sm tracking-widest uppercase relative z-10 mt-2"
-                >
-                  ✓ Message sent successfully!
-                </motion.div>
-              )}
-              {status === "ERROR" && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 font-bold text-center text-sm tracking-widest uppercase relative z-10 mt-2"
-                >
-                  Failed to send message. Please try again.
-                </motion.div>
-              )}
+                  {status === "SUCCESS" && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-green-400 font-bold text-center text-sm tracking-widest uppercase relative z-10 mt-2"
+                    >
+                      ✓ Message sent successfully!
+                    </motion.div>
+                  )}
+                  {status === "ERROR" && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-400 font-bold text-center text-sm tracking-widest uppercase relative z-10 mt-2"
+                    >
+                      Failed to send message. Please try again.
+                    </motion.div>
+                  )}
+                </div>
+              </BorderGlow>
             </form>
           </FadeIn>
         </div>

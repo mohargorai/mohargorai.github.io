@@ -8,6 +8,13 @@
     margin: 0;
     padding: 0;
   }
+  
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
   }

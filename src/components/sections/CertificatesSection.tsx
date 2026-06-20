@@ -1,15 +1,13 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
-import { pdfjs } from 'react-pdf';
-
-// Lazy load heavy PDF components
-const Document = React.lazy(() => import('react-pdf').then(m => ({ default: m.Document })));
+// Lazy load heavy PDF components and configure worker
+const Document = React.lazy(() => import('react-pdf').then(m => {
+  m.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${m.pdfjs.version}/build/pdf.worker.min.mjs`;
+  return { default: m.Document };
+}));
 const Page = React.lazy(() => import('react-pdf').then(m => ({ default: m.Page })));
 import { certificates } from '../../data/certificates';
-
-// Configure the worker for PDF.js using a CDN to avoid build issues
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

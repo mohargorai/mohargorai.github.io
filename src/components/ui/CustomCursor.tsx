@@ -46,22 +46,6 @@ export const CustomCursor = () => {
     };
   }, [cursorX, cursorY, isVisible]);
 
-  useEffect(() => {
-    if (isHoverDevice) {
-      document.body.style.cursor = 'none';
-      const interactiveElements = document.querySelectorAll('a, button, input, textarea, select');
-      interactiveElements.forEach(el => {
-        (el as HTMLElement).style.cursor = 'none';
-      });
-      return () => {
-        document.body.style.cursor = 'auto';
-        interactiveElements.forEach(el => {
-          (el as HTMLElement).style.cursor = 'pointer';
-        });
-      };
-    }
-  }, [isHoverDevice]);
-
   if (!isHoverDevice || !isVisible) return null;
 
   return (
