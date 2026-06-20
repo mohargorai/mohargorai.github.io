@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ScrambleText } from '../ui/ScrambleText';
 
@@ -7,6 +7,20 @@ export const FloatingNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { scrollY } = useScroll();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 300) {
@@ -24,6 +38,7 @@ export const FloatingNavbar = () => {
       <AnimatePresence>
         {isVisible && (
           <motion.div
+            ref={menuRef}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
@@ -78,16 +93,44 @@ export const FloatingNavbar = () => {
             <AnimatePresence>
               {isOpen && (
                 <motion.nav
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  className="mt-4 flex flex-col gap-4 bg-[#121316]/60 backdrop-blur-lg border border-[#D7E2EA]/20 p-6 rounded-2xl shadow-2xl text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-base min-w-[150px] items-end"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={{
+                    hidden: { opacity: 0, y: -20, scale: 0.8, filter: "blur(10px)" },
+                    visible: { 
+                      opacity: 1, y: 0, scale: 1, filter: "blur(0px)", 
+                      transition: { type: "spring", damping: 25, stiffness: 300, staggerChildren: 0.08, delayChildren: 0.1 } 
+                    },
+                    exit: { 
+                      opacity: 0, y: -20, scale: 0.8, filter: "blur(10px)", 
+                      transition: { duration: 0.25, ease: "easeInOut" } 
+                    }
+                  }}
+                  className="mt-4 flex flex-col gap-4 bg-[#121316]/60 backdrop-blur-lg border border-[#D7E2EA]/20 p-6 rounded-2xl shadow-2xl text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-base min-w-[150px] items-end overflow-hidden origin-top-right"
                 >
-                  <a href="#about" onClick={toggleMenu} className="hover:opacity-70 transition-opacity duration-200"><ScrambleText text="About" /></a>
-                  <a href="#skills" onClick={toggleMenu} className="hover:opacity-70 transition-opacity duration-200"><ScrambleText text="Skill set" /></a>
-                  <a href="#projects" onClick={toggleMenu} className="hover:opacity-70 transition-opacity duration-200"><ScrambleText text="Projects" /></a>
-                  <a href="#certificates" onClick={toggleMenu} className="hover:opacity-70 transition-opacity duration-200"><ScrambleText text="Certificates" /></a>
-                  <a href="#contact" onClick={toggleMenu} className="hover:opacity-70 transition-opacity duration-200"><ScrambleText text="Contact" /></a>
+                  {[
+                    { href: '#about', text: 'About' },
+                    { href: '#skills', text: 'Skill set' },
+                    { href: '#projects', text: 'Projects' },
+                    { href: '#certificates', text: 'Certificates' },
+                    { href: '#contact', text: 'Contact' },
+                  ].map((item) => (
+                    <div key={item.href} className="overflow-hidden">
+                      <motion.a
+                        href={item.href}
+                        onClick={toggleMenu}
+                        variants={{
+                          hidden: { opacity: 0, y: 40, rotate: 10 },
+                          visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+                          exit: { opacity: 0, y: 20, rotate: -5, transition: { duration: 0.2 } }
+                        }}
+                        className="hover:opacity-70 transition-opacity duration-200 block origin-bottom-left"
+                      >
+                        <ScrambleText text={item.text} />
+                      </motion.a>
+                    </div>
+                  ))}
                 </motion.nav>
               )}
             </AnimatePresence>
