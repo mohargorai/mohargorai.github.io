@@ -1,51 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const CHARS = '!<>-_\\/[]{}—=+*^?#________';
-const BRAND_TEXT = 'MOHAR GORAI';
-
-export const Preloader = () => {
-  const [displayText, setDisplayText] = useState('');
+export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
+  const [progress, setProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    let iteration = 0;
+    // Fast-counting logic
     const interval = setInterval(() => {
-      setDisplayText(
-        BRAND_TEXT
-          .split('')
-          .map((_, index) => {
-            if (index < iteration) {
-              return BRAND_TEXT[index];
-            }
-            return CHARS[Math.floor(Math.random() * CHARS.length)];
-          })
-          .join('')
-      );
-
-      if (iteration >= BRAND_TEXT.length) {
-        clearInterval(interval);
-      }
-
-      iteration += 1 / 3; // Controls the speed of the unscrambling
-    }, 40); // 40ms interval for smooth scrambling
+      setProgress((prev) => {
+        // Random increment between 2 and 15
+        const next = prev + Math.floor(Math.random() * 14) + 2;
+        if (next >= 100) {
+          clearInterval(interval);
+          // Hold at 100% briefly, then trigger exit
+          setTimeout(() => {
+            setIsVisible(false);
+            // Notify parent to unlock scrolling after animation finishes
+            setTimeout(onComplete, 800); 
+          }, 300);
+          return 100;
+        }
+        return next;
+      });
+    }, 40);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [onComplete]);
 
   return (
-    <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0C0C0C]"
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-    >
-      <div className="relative">
-        <h1 className="text-[#D7E2EA] font-black tracking-[0.2em] md:tracking-[0.4em] text-2xl sm:text-4xl md:text-5xl uppercase relative z-10">
-          {displayText}
-        </h1>
-        {/* Subtle glowing halo behind the text */}
-        <div className="absolute inset-0 bg-[#D7E2EA] blur-[40px] opacity-10 z-0"></div>
-      </div>
-    </motion.div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ y: 0 }}
+          exit={{ y: '-100%', opacity: 0 }}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0C0C0C] text-[#D7E2EA]"
+        >
+          {/* Progress Counter */}
+          <div className="relative overflow-hidden">
+            <motion.span 
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="hero-heading font-black tracking-tighter block leading-none" 
+              style={{ fontSize: 'clamp(5rem, 15vw, 15rem)' }}
+            >
+              {progress}%
+            </motion.span>
+          </div>
+          
+          {/* Small loading text */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 uppercase tracking-widest text-xs font-bold opacity-50">
+            Initializing Experience
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
