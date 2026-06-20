@@ -124,15 +124,21 @@ export const GlobalPreloader = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex items-center gap-6"
+                className="flex items-center gap-4 md:gap-6"
               >
                 <div className="flex items-center gap-3">
                   <span className="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B600A8] opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-[#B600A8] shadow-[0_0_8px_#B600A8]"></span>
                   </span>
-                  <span className="text-[#D7E2EA]/70 font-medium tracking-[0.3em] text-[10px] md:text-xs uppercase">
-                    Initializing
+                  <span className="text-[#D7E2EA]/70 font-medium tracking-[0.2em] md:tracking-[0.3em] text-[8px] md:text-[10px] uppercase min-w-[180px] md:min-w-[220px]">
+                    {progress < 15 ? "Bypassing CDN cache..." : 
+                     progress < 30 ? "Bootstrapping runtime..." : 
+                     progress < 45 ? "Injecting spring physics..." : 
+                     progress < 60 ? "Mounting virtual DOM..." : 
+                     progress < 75 ? "Allocating VRAM for 3D..." : 
+                     progress < 95 ? "Compiling GSAP timelines..." : 
+                     "System ready."}
                   </span>
                 </div>
                 
