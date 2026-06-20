@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { motion, useSpring, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
 import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
 import { pdfjs } from 'react-pdf';
 
@@ -34,20 +34,19 @@ export const CertificatesSection = () => {
       cursorY.set(e.clientY);
     };
 
+    const handleScroll = () => {
+      // Hide the popup immediately when the user scrolls to prevent it from sticking
+      setHoveredIndex(null);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [cursorX, cursorY]);
-
-  const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", () => {
-    // Hide the popup immediately when the user scrolls to prevent it from sticking
-    if (hoveredIndex !== null) {
-      setHoveredIndex(null);
-    }
-  });
 
   useEffect(() => {
     if (!isHoverDevice) return;
@@ -62,7 +61,7 @@ export const CertificatesSection = () => {
   }, [hoveredIndex, opacity, scale, isHoverDevice]);
 
   return (
-    <section id="certificates" className="content-auto bg-[#121316] flex flex-col pt-24 pb-32 sm:pt-32 sm:pb-40 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
+    <section id="certificates" className="bg-[#121316] flex flex-col pt-24 pb-32 sm:pt-32 sm:pb-40 relative z-30 overflow-hidden border-t border-white/5 rounded-t-[40px] sm:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 cursor-default">
       
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">

@@ -34,7 +34,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="content-auto flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 pt-24 pb-16 sm:pt-32 sm:pb-20 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
+    <section id="contact" className="flex flex-col justify-center items-center px-5 sm:px-8 md:px-10 pt-24 pb-16 sm:pt-32 sm:pb-20 bg-[#121316] relative z-30 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] border-t-2 border-[#D7E2EA]/10 -mt-10 sm:-mt-12 md:-mt-14 overflow-hidden">
       
       <div className="px-5 sm:px-8 md:px-10 mb-16 sm:mb-20 md:mb-24 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center mt-4 lg:mt-8">
         <FadeIn y={40} className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
