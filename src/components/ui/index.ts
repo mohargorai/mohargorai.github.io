@@ -9,3 +9,4 @@ export * from './ScrambleText';
 export * from './SquishBounce';
 export * from './TypingHeading';
 export * from './Skeleton';
+export * from './Preloader';
