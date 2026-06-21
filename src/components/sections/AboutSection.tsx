@@ -76,17 +76,17 @@ export const AboutSection = () => {
                 <div className="flex flex-col">
                   <div className="flex flex-col border-l-2 border-[#D7E2EA]/20 pl-4 sm:pl-6 pb-8 relative before:absolute before:content-[''] before:w-3 before:h-3 before:rounded-full before:bg-[#D7E2EA] before:-left-[7px] before:top-1.5 after:absolute after:content-[''] after:w-3 after:h-3 after:rounded-full after:bg-[#D7E2EA] after:animate-ping after:-left-[7px] after:top-1.5">
                     <span className="text-[#D7E2EA]/60 text-xs sm:text-sm uppercase tracking-widest font-medium mb-1">2024 - 2028</span>
-                    <a href="https://maps.app.goo.gl/pZkYUgh3742BgZXWA" target="_blank" rel="noreferrer" className="text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">Vellore Institute of Technology</a>
+                    <a href="https://maps.app.goo.gl/pZkYUgh3742BgZXWA" target="_blank" rel="noreferrer" className="no-cursor text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">Vellore Institute of Technology</a>
                     <p className="text-[#D7E2EA]/70 mt-1">B.Tech in Information Technology</p>
                   </div>
                   <div className="flex flex-col border-l-2 border-[#D7E2EA]/20 pl-4 sm:pl-6 pb-8 relative before:absolute before:content-[''] before:w-3 before:h-3 before:rounded-full before:bg-[#D7E2EA]/40 before:-left-[7px] before:top-1.5">
                     <span className="text-[#D7E2EA]/60 text-xs sm:text-sm uppercase tracking-widest font-medium mb-1">2022 - 2024</span>
-                    <a href="https://maps.app.goo.gl/nD2ao2iAiJb1SaeE7" target="_blank" rel="noreferrer" className="text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">St. Patrick's Higher Secondary School</a>
+                    <a href="https://maps.app.goo.gl/nD2ao2iAiJb1SaeE7" target="_blank" rel="noreferrer" className="no-cursor text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">St. Patrick's Higher Secondary School</a>
                     <p className="text-[#D7E2EA]/70 mt-1">Intermediate, PCM with Computer Science</p>
                   </div>
                   <div className="flex flex-col border-l-2 border-[#D7E2EA]/20 pl-4 sm:pl-6 relative before:absolute before:content-[''] before:w-3 before:h-3 before:rounded-full before:bg-[#D7E2EA]/40 before:-left-[7px] before:top-1.5">
                     <span className="text-[#D7E2EA]/60 text-xs sm:text-sm uppercase tracking-widest font-medium mb-1">2011 - 2022</span>
-                    <a href="https://maps.app.goo.gl/wWhYfimi8xbiQJkSA" target="_blank" rel="noreferrer" className="text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">St. Vincent's High & Technical School</a>
+                    <a href="https://maps.app.goo.gl/wWhYfimi8xbiQJkSA" target="_blank" rel="noreferrer" className="no-cursor text-[#D7E2EA] font-bold text-lg sm:text-xl hover:text-white transition-colors duration-200">St. Vincent's High & Technical School</a>
                     <p className="text-[#D7E2EA]/70 mt-1">Matriculation, General Studies</p>
                   </div>
                 </div>

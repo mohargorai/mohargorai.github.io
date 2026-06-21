@@ -40,7 +40,7 @@ export interface TargetCursorProps {
 }
 
 const TargetCursor: React.FC<TargetCursorProps> = ({
-  targetSelector = '.cursor-target',
+  targetSelector = '.cursor-target, button:not(.no-cursor), a:not(.no-cursor), [role="button"]:not(.no-cursor)',
   spinDuration = 2,
   hideDefaultCursor = true,
   hoverDuration = 0.2,
@@ -213,16 +213,20 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       gsap.set(cursorRef.current, { rotation: 0 });
 
       const rect = target.getBoundingClientRect();
-      const { borderWidth, cornerSize } = constants;
+      const { cornerSize } = constants;
       const { x: offsetX, y: offsetY } = getOffset();
       const cursorX = gsap.getProperty(cursorRef.current, 'x') as number;
       const cursorY = gsap.getProperty(cursorRef.current, 'y') as number;
 
+      // Allow elements to define custom padding, fallback to 4px
+      const customPadding = target.getAttribute('data-cursor-padding');
+      const padding = customPadding ? parseFloat(customPadding) : 4;
+
       targetCornerPositionsRef.current = [
-        { x: rect.left - borderWidth - offsetX, y: rect.top - borderWidth - offsetY },
-        { x: rect.right + borderWidth - cornerSize - offsetX, y: rect.top - borderWidth - offsetY },
-        { x: rect.right + borderWidth - cornerSize - offsetX, y: rect.bottom + borderWidth - cornerSize - offsetY },
-        { x: rect.left - borderWidth - offsetX, y: rect.bottom + borderWidth - cornerSize - offsetY }
+        { x: rect.left - padding - offsetX, y: rect.top - padding - offsetY },
+        { x: rect.right + padding - cornerSize - offsetX, y: rect.top - padding - offsetY },
+        { x: rect.right + padding - cornerSize - offsetX, y: rect.bottom + padding - cornerSize - offsetY },
+        { x: rect.left - padding - offsetX, y: rect.bottom + padding - cornerSize - offsetY }
       ];
 
       isActiveRef.current = true;

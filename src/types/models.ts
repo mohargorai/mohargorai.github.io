@@ -1,7 +1,12 @@
+export interface Skill {
+  name: string;
+  url: string;
+}
+
 export interface Service {
   num: string;
   title: string;
-  skills: string[];
+  skills: Skill[];
 }
 
 export interface Project {
