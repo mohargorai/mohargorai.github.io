@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeroSection, AboutSection, ServicesSection, ProjectsSection, CertificatesSection, ContactSection } from './components/sections';
-import { CustomCursor, TargetCursor, GlobalPreloader } from './components/ui';
+import { CustomCursor, TargetCursor, GlobalPreloader, BackToTopButton } from './components/ui';
 import { FloatingNavbar } from './components/layout';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         parallaxOn
         hoverDuration={0.2}
       />
+      <BackToTopButton />
       <FloatingNavbar />
       <HeroSection />
       <AboutSection />
