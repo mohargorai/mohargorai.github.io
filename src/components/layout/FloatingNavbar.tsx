@@ -42,7 +42,7 @@ export const FloatingNavbar = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="fixed top-6 right-6 z-50 flex flex-col items-end"
+            className="fixed top-6 right-6 z-50 flex flex-col items-end pointer-events-none"
           >
             {/* Hamburger Button */}
             <motion.button
@@ -50,7 +50,7 @@ export const FloatingNavbar = () => {
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
               whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 rounded-full bg-[#121316]/60 backdrop-blur-md border border-[#D7E2EA]/20 flex flex-col items-center justify-center shadow-lg hover:bg-[#121316]/80 transition-colors relative"
+              className="w-12 h-12 rounded-full bg-[#121316]/60 backdrop-blur-md border border-[#D7E2EA]/20 flex flex-col items-center justify-center shadow-lg hover:bg-[#121316]/80 transition-colors relative pointer-events-auto"
             >
               <div className="flex flex-col items-center justify-center gap-1.5 absolute inset-0">
                 <motion.div 
@@ -107,7 +107,7 @@ export const FloatingNavbar = () => {
                       transition: { duration: 0.25, ease: "easeInOut" } 
                     }
                   }}
-                  className="mt-4 flex flex-col gap-4 bg-[#121316]/60 backdrop-blur-lg border border-[#D7E2EA]/20 p-6 rounded-2xl shadow-2xl text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-base min-w-[150px] items-end overflow-hidden origin-top-right"
+                  className="mt-4 flex flex-col gap-4 bg-[#121316]/60 backdrop-blur-lg border border-[#D7E2EA]/20 p-6 rounded-2xl shadow-2xl text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-base min-w-[150px] items-end overflow-hidden origin-top-right pointer-events-auto"
                 >
                   {[
                     { href: '#about', text: 'About' },
