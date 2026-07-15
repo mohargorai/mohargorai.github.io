@@ -94,8 +94,9 @@ export const Antigravity: React.FC<AntigravityProps> = ({
       ctx.clearRect(0, 0, width, height);
 
       if (autoAnimate && now - lastMouseMove > 2000) {
-        mouse.x = width / 2 + Math.sin(elapsed * 0.5) * (width / 4);
-        mouse.y = height / 2 + Math.cos(elapsed * 1) * (height / 4);
+        // Ponytail style: pure math pseudo-random wander (no heavy noise libraries)
+        mouse.x = width / 2 + (Math.sin(elapsed * 0.3) + Math.sin(elapsed * 0.43)) * (width / 6);
+        mouse.y = height / 2 + (Math.cos(elapsed * 0.25) + Math.sin(elapsed * 0.37)) * (height / 6);
       }
 
       virtualMouse.x += (mouse.x - virtualMouse.x) * 0.1;
