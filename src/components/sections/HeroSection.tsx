@@ -31,7 +31,7 @@ export const HeroSection = () => {
           <div className="relative w-full h-[15vw] sm:h-[16vw] md:h-[18vw] lg:h-[20vw] mt-6 sm:mt-4 md:-mt-5">
             <TextPressure
               text="HI, I'M MOHAR"
-              flex={false}
+              flex={true}
               alpha={false}
               stroke={false}
               width

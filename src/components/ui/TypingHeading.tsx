@@ -12,7 +12,7 @@ export const TypingHeading: React.FC<TypingHeadingProps> = ({ text, className, s
     <div className="relative w-full h-[18vw] sm:h-[14vw] md:h-[11vw] max-h-[160px] flex items-center justify-center overflow-visible" style={style}>
       <TextPressure
         text={text}
-        flex={false}
+        flex={true}
         alpha={false}
         stroke={false}
         width
