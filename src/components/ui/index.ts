@@ -5,7 +5,6 @@ export * from './TypingHeading';
 export * from './Magnet';
 export * from './LiveProjectButton';
 export * from './AnimatedText';
-export * from './TextPressure';
 export * from './ScrambleText';
 export * from './ContactButton';
 export * from './DownloadCVButton';

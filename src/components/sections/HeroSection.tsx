@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText, TextPressure } from '../ui';
+import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText } from '../ui';
 
 export const HeroSection = () => {
   const [appLoaded, setAppLoaded] = useState(() => (typeof window !== 'undefined' && (window as unknown as { isAppLoaded?: boolean }).isAppLoaded) || false);
@@ -28,19 +28,21 @@ export const HeroSection = () => {
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pointer-events-none">
 
         <div className="overflow-hidden w-full flex justify-center px-2 sm:px-0">
-          <div className="relative w-full h-[15vw] sm:h-[16vw] md:h-[18vw] lg:h-[20vw] mt-6 sm:mt-4 md:-mt-5">
-            <TextPressure
-              text="HI, I'M MOHAR"
-              flex={true}
-              alpha={false}
-              stroke={false}
-              width
-              weight
-              italic
-              textColor="transparent"
-              className="hero-heading font-black tracking-tight"
-            />
-          </div>
+          <motion.h1 
+            initial={{ opacity: 1 }}
+            className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5"
+          >
+            {Array.from("Hi, I'm Mohar").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={appLoaded ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.h1>
         </div>
       </div>
 
