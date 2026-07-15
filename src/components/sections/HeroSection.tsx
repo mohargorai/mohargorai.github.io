@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText } from '../ui';
+import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText, Antigravity } from '../ui';
 
 export const HeroSection = () => {
   const [appLoaded, setAppLoaded] = useState(() => (typeof window !== 'undefined' && (window as unknown as { isAppLoaded?: boolean }).isAppLoaded) || false);
@@ -13,6 +13,22 @@ export const HeroSection = () => {
   }, [appLoaded]);
   return (
     <section className="h-screen w-full flex flex-col overflow-x-clip relative">
+      <Antigravity
+        count={500}
+        magnetRadius={150}
+        ringRadius={80}
+        waveSpeed={0.4}
+        waveAmplitude={15}
+        particleSize={1.5}
+        lerpSpeed={0.05}
+        color="#D7E2EA"
+        autoAnimate
+        particleVariance={1}
+        rotationSpeed={0.5}
+        pulseSpeed={3}
+        particleShape="sphere"
+        fieldStrength={10}
+      />
       {/* Navbar */}
       <FadeIn delay={0} y={-20} className="w-full">
         <nav className="flex justify-center sm:justify-between items-center gap-4 sm:gap-0 flex-wrap px-4 sm:px-6 md:px-10 pt-6 md:pt-8 w-full text-[#D7E2EA] font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.4rem]">
