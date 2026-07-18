@@ -77,10 +77,10 @@ export const HeroSection = () => {
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pointer-events-none w-full">
         
         <div className="flex flex-col items-start justify-center w-fit">
-          <div className="overflow-hidden w-full flex justify-start px-2 sm:px-0">
+          <div className="overflow-hidden w-full flex justify-start pl-2 sm:pl-0 pr-4 sm:pr-6">
             <motion.h1 
               initial={{ opacity: 1 }}
-              className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-left text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5"
+              className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-left text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5 pr-2"
             >
               {Array.from("Hi, I'm Mohar").map((char, index) => (
                 <motion.span
