@@ -1,9 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText, Antigravity } from '../ui';
+
+const welcomeWords = [
+  "Welcome",
+  "স্বাগতম",
+  "स्वागत",
+  "ようこそ",
+  "நல்வரவு",
+  "స్వాగతం",
+  "ಸ್ವಾಗತ",
+  "സ്വാഗതം",
+  "સ્વાગતમ",
+  "ਜੀ ਆਇਆਂ ਨੂੰ",
+  "خوش آمدید",
+  "欢迎",
+  "환영합니다",
+  "Willkommen",
+  "Bienvenido",
+  "Bienvenue",
+  "Benvenuto",
+  "Bem-vindo",
+  "Добро пожаловать",
+  "أهلاً بك"
+];
 
 export const HeroSection = () => {
   const [appLoaded, setAppLoaded] = useState(() => (typeof window !== 'undefined' && (window as unknown as { isAppLoaded?: boolean }).isAppLoaded) || false);
+  const [welcomeIndex, setWelcomeIndex] = useState(0);
 
   useEffect(() => {
     if (appLoaded) return;
@@ -11,6 +35,15 @@ export const HeroSection = () => {
     window.addEventListener('appLoaded', handleLoad);
     return () => window.removeEventListener('appLoaded', handleLoad);
   }, [appLoaded]);
+
+  useEffect(() => {
+    if (!appLoaded) return;
+    const interval = setInterval(() => {
+      setWelcomeIndex((prev) => (prev + 1) % welcomeWords.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [appLoaded]);
+
   return (
     <section className="h-screen w-full flex flex-col overflow-x-clip relative">
       <Antigravity
@@ -41,24 +74,41 @@ export const HeroSection = () => {
       </FadeIn>
 
       {/* Hero Heading */}
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pointer-events-none">
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pointer-events-none w-full">
+        
+        <div className="flex flex-col items-start justify-center w-fit">
+          <div className="overflow-hidden w-full flex justify-start px-2 sm:px-0">
+            <motion.h1 
+              initial={{ opacity: 1 }}
+              className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-left text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5"
+            >
+              {Array.from("Hi, I'm Mohar").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ visibility: "hidden" }}
+                  animate={appLoaded ? { visibility: "visible" } : { visibility: "hidden" }}
+                  transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </div>
 
-        <div className="overflow-hidden w-full flex justify-center px-2 sm:px-0">
-          <motion.h1 
-            initial={{ opacity: 1 }}
-            className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5"
-          >
-            {Array.from("Hi, I'm Mohar").map((char, index) => (
+          <div className="h-[40px] sm:h-[50px] md:h-[70px] flex justify-start items-center w-full mt-2 sm:mt-0 relative px-2 sm:px-0">
+            <AnimatePresence mode="wait">
               <motion.span
-                key={index}
-                initial={{ visibility: "hidden" }}
-                animate={appLoaded ? { visibility: "visible" } : { visibility: "hidden" }}
-                transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
+                key={welcomeIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="hero-heading font-black tracking-tight text-[6vw] sm:text-[5vw] md:text-[4vw] absolute left-2 sm:left-0"
               >
-                {char === ' ' ? '\u00A0' : char}
+                {welcomeWords[welcomeIndex]}
               </motion.span>
-            ))}
-          </motion.h1>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
