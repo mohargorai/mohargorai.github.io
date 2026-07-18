@@ -51,8 +51,8 @@ export const HeroSection = () => {
             {Array.from("Hi, I'm Mohar").map((char, index) => (
               <motion.span
                 key={index}
-                initial={{ opacity: 0 }}
-                animate={appLoaded ? { opacity: 1 } : { opacity: 0 }}
+                initial={{ visibility: "hidden" }}
+                animate={appLoaded ? { visibility: "visible" } : { visibility: "hidden" }}
                 transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
               >
                 {char === ' ' ? '\u00A0' : char}
