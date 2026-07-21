@@ -123,9 +123,23 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     createSpinTimeline();
 
     const tickerFn = () => {
-      if (!targetCornerPositionsRef.current || !cursorRef.current || !cornersRef.current) {
+      if (!targetCornerPositionsRef.current || !cursorRef.current || !cornersRef.current || !activeTarget) {
         return;
       }
+      
+      const rect = activeTarget.getBoundingClientRect();
+      const customPadding = activeTarget.getAttribute('data-cursor-padding');
+      const padding = customPadding ? parseFloat(customPadding) : 4;
+      const { cornerSize } = constants;
+      const { x: offsetX, y: offsetY } = getOffset();
+      
+      targetCornerPositionsRef.current = [
+        { x: rect.left - padding - offsetX, y: rect.top - padding - offsetY },
+        { x: rect.right + padding - cornerSize - offsetX, y: rect.top - padding - offsetY },
+        { x: rect.right + padding - cornerSize - offsetX, y: rect.bottom + padding - cornerSize - offsetY },
+        { x: rect.left - padding - offsetX, y: rect.bottom + padding - cornerSize - offsetY }
+      ];
+
       const strength = activeStrengthRef.current.current;
       if (strength === 0) return;
       const cursorX = gsap.getProperty(cursorRef.current, 'x') as number;

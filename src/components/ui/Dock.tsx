@@ -41,9 +41,9 @@ const DockIcon = ({ mouseX, children }: DockIconProps) => {
     <motion.div 
       ref={ref} 
       style={{ width, height: width }} 
-      className="flex items-center justify-center rounded-2xl bg-[#D7E2EA]/10 hover:bg-[#D7E2EA]/20 transition-colors border border-[#D7E2EA]/20 shadow-lg cursor-pointer group"
+      className="cursor-target relative flex items-center justify-center rounded-2xl bg-[#D7E2EA]/10 hover:bg-[#D7E2EA]/20 transition-colors border border-[#D7E2EA]/20 shadow-lg group"
     >
-      <div className="w-[60%] h-[60%] flex items-center justify-center text-[#D7E2EA]/80 group-hover:text-white transition-colors duration-300 [&>a]:w-full [&>a]:h-full [&>a>svg]:w-full [&>a>svg]:h-full [&>a]:flex [&>a]:items-center [&>a]:justify-center">
+      <div className="w-full h-full flex items-center justify-center text-[#D7E2EA]/80 group-hover:text-white transition-colors duration-300 [&>a]:absolute [&>a]:inset-0 [&>a]:flex [&>a]:items-center [&>a]:justify-center [&>a>svg]:w-[60%] [&>a>svg]:h-[60%]">
          {children}
       </div>
     </motion.div>
