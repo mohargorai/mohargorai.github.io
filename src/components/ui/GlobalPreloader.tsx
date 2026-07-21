@@ -22,29 +22,16 @@ export const GlobalPreloader = () => {
   }, [isLoading]);
 
   useEffect(() => {
+    let isFullyLoaded = document.readyState === 'complete';
+    const handleLoad = () => { isFullyLoaded = true; };
+    window.addEventListener('load', handleLoad);
 
-    let images: HTMLImageElement[] = [];
-    let loadedImages = 0;
-
-    const checkProgress = () => {
-      if (images.length === 0) return;
-      const currentProgress = (loadedImages / images.length) * 100;
-      setProgress(currentProgress);
-      
-      if (loadedImages >= images.length) {
-        // All images loaded
-        setTimeout(() => {
-          (window as unknown as { isAppLoaded?: boolean }).isAppLoaded = true;
-          window.dispatchEvent(new Event('appLoaded'));
-          setIsLoading(false);
-        }, 600);
-      }
-    };
-
-    const handleImageLoad = () => {
-      loadedImages++;
-      checkProgress();
-    };
+    let currentProgress = 0;
+    const duration = 2000; // 2 seconds minimum loading time
+    const interval = 20; 
+    const step = 100 / (duration / interval);
+    
+    let timer: ReturnType<typeof setInterval>;
 
     const finishLoading = () => {
       (window as unknown as { isAppLoaded?: boolean }).isAppLoaded = true;
@@ -52,42 +39,42 @@ export const GlobalPreloader = () => {
       setIsLoading(false);
     };
 
-    // Give React a small tick to mount all sibling image elements into the DOM
-    const initTimer = setTimeout(() => {
-      images = Array.from(document.images);
-      
-      if (images.length === 0) {
-        setProgress(100);
-        setTimeout(finishLoading, 500);
-        return;
-      }
-
-      images.forEach((img) => {
-        if (img.complete) {
-          loadedImages++;
-        } else {
-          img.addEventListener('load', handleImageLoad);
-          img.addEventListener('error', handleImageLoad); // count error as loaded to prevent hanging
+    const runSimulatedLoader = () => {
+      timer = setInterval(() => {
+        // Cap at 90% if the page is still downloading assets
+        const target = isFullyLoaded ? 100 : 90;
+        
+        if (currentProgress < target) {
+          currentProgress += step;
+          const jitter = Math.random() * 2;
+          currentProgress += jitter;
         }
-      });
-      
-      checkProgress();
-    }, 50);
+        
+        if (currentProgress >= 100 && isFullyLoaded) {
+          currentProgress = 100;
+          setProgress(100);
+          clearInterval(timer);
+          setTimeout(finishLoading, 400);
+        } else {
+          // Never visually show 100 until fully loaded and ready to close
+          setProgress(Math.min(currentProgress, 99.9));
+        }
+      }, interval);
+    };
 
-    // Ultimate safety fallback so users aren't stuck if an image completely stalls
+    const initTimer = setTimeout(runSimulatedLoader, 50);
+
+    // Fallback: If some third-party script hangs window.onload, force finish after 10 seconds
     const fallbackTimer = setTimeout(() => {
-      setProgress(100);
-      finishLoading();
-    }, 5000);
+      isFullyLoaded = true;
+    }, 10000);
 
     return () => {
+      window.removeEventListener('load', handleLoad);
       document.body.style.overflow = '';
+      clearInterval(timer);
       clearTimeout(initTimer);
       clearTimeout(fallbackTimer);
-      images.forEach((img) => {
-        img.removeEventListener('load', handleImageLoad);
-        img.removeEventListener('error', handleImageLoad);
-      });
     };
   }, []);
 

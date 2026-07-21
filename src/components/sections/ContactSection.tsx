@@ -96,7 +96,7 @@ export const ContactSection = () => {
             <div className="relative group w-full max-w-[340px] sm:max-w-[400px]">
               <div className="absolute inset-0 bg-[#D7E2EA]/5 blur-[60px] rounded-full group-hover:bg-[#D7E2EA]/10 transition-colors duration-700 pointer-events-none"></div>
               <FlickeringGridQR 
-                text={`BEGIN:VCARD\nVERSION:3.0\nN:Gorai;Mohar;;;\nFN:Mohar Gorai\nTITLE:Student\nEMAIL:work.mohargorai@gmail.com\nPHOTO;TYPE=PNG;VALUE=URI:https://github.com/mohargorai.png\nURL:https://www.linkedin.com/in/mohar-gorai-518123338/\nURL:https://github.com/mohargorai\nEND:VCARD`}
+                text={`BEGIN:VCARD\nVERSION:3.0\nN:Gorai;Mohar;;;\nFN:Mohar Gorai\nTITLE:Student\nEMAIL:work.mohargorai@gmail.com\nURL:https://www.linkedin.com/in/mohar-gorai-518123338/\nURL:https://github.com/mohargorai\nEND:VCARD`}
                 color="#D7E2EA"
                 size={340}
               />
