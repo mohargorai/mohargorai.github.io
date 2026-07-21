@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn, TypingHeading, SquishBounce, BorderGlow } from '../ui';
+import { FadeIn, TypingHeading, SquishBounce, BorderGlow, FlickeringGridQR } from '../ui';
 
 export const ContactSection = () => {
   const [status, setStatus] = useState<"IDLE" | "SUBMITTING" | "SUCCESS" | "ERROR">("IDLE");
@@ -66,6 +66,17 @@ export const ContactSection = () => {
             className="hero-heading font-black uppercase text-center sm:text-left mb-0 leading-none tracking-normal" 
             style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
           />
+
+          <div className="relative z-10 shrink-0 hidden lg:block transform hover:-translate-y-2 hover:rotate-3 transition-transform duration-500 ml-4 xl:ml-8">
+            <FlickeringGridQR 
+              text={`BEGIN:VCARD\nVERSION:3.0\nN:Gorai;Mohar;;;\nFN:Mohar Gorai\nTITLE:Software Developer\nTEL;TYPE=CELL:+917863995905\nEMAIL:work.mohargorai@gmail.com\nURL:https://github.com/mohargorai\nEND:VCARD`}
+              color="#D7E2EA"
+              size={130}
+            />
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-max">
+              <span className="text-[#D7E2EA]/40 uppercase tracking-widest text-[10px] font-bold">Scan Contact</span>
+            </div>
+          </div>
         </FadeIn>
       </div>
       
@@ -137,6 +148,7 @@ export const ContactSection = () => {
             </div>
           </a>
         </FadeIn>
+
         </div>
 
         {/* Right Column: Contact Form */}

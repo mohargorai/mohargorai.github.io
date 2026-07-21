@@ -95,7 +95,7 @@ export const HeroSection = () => {
             </motion.h1>
           </div>
 
-          <div className="h-[40px] sm:h-[50px] md:h-[70px] flex justify-start items-center w-full mt-2 sm:mt-0 relative px-2 sm:px-0">
+          <div className="h-[40px] sm:h-[50px] md:h-[70px] flex justify-start items-center w-full mt-2 sm:mt-0 px-2 sm:px-0">
             <AnimatePresence mode="wait">
               <motion.span
                 key={welcomeIndex}
@@ -103,7 +103,7 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="hero-heading font-black tracking-tight text-[6vw] sm:text-[5vw] md:text-[4vw] absolute left-2 sm:left-0"
+                className="hero-heading font-black tracking-tight text-[6vw] sm:text-[5vw] md:text-[4vw]"
               >
                 {welcomeWords[welcomeIndex]}
               </motion.span>
