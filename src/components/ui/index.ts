@@ -16,3 +16,4 @@ export { default as TiltedCard } from './TiltedCard';
 export * from './BackToTopButton';
 export * from './Antigravity';
 export * from './FlickeringGridQR';
+export * from './Dock';
