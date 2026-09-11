@@ -1,14 +1,46 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { motion, useSpring } from 'framer-motion';
+import React, { useState, useEffect, Suspense, useMemo } from 'react';
+import { motion, useSpring, AnimatePresence } from 'framer-motion';
 import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
 import { certificates } from '../../data/certificates';
 
 // Lazy load the PDF viewer to properly code-split the heavy react-pdf library
 const PDFViewer = React.lazy(() => import('../ui/PDFViewer'));
 
+const ChevronLeft = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+);
+const ChevronRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+);
+
 export const CertificatesSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isHoverDevice] = useState(() => typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : true);
+
+  const years = useMemo(() => {
+    const extractedYears = certificates.map(cert => {
+      const match = cert.date.match(/\d{4}$/);
+      return match ? match[0] : null;
+    }).filter(Boolean) as string[];
+    return Array.from(new Set(extractedYears)).sort((a, b) => parseInt(b) - parseInt(a));
+  }, []);
+
+  const [selectedYearIndex, setSelectedYearIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const selectedYear = years[selectedYearIndex] || "";
+
+  const filteredCertificates = useMemo(() => {
+    return certificates.filter(cert => cert.date.endsWith(selectedYear));
+  }, [selectedYear]);
+
+  const handlePrevYear = () => {
+    setDirection(-1);
+    setSelectedYearIndex(prev => (prev > 0 ? prev - 1 : years.length - 1));
+  };
+  const handleNextYear = () => {
+    setDirection(1);
+    setSelectedYearIndex(prev => (prev < years.length - 1 ? prev + 1 : 0));
+  };
   
   // Spring physics for the cursor follower
   const cursorX = useSpring(0, { stiffness: 150, damping: 15, mass: 0.5 });
@@ -61,7 +93,7 @@ export const CertificatesSection = () => {
         <div className="absolute bottom-[-10%] right-[-5%] w-[30vw] h-[30vw] bg-blue-500/10 blur-[100px] rounded-full"></div>
       </div>
 
-      <div className="px-5 sm:px-8 md:px-10 mb-16 sm:mb-20 md:mb-24 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center">
+      <div className="px-5 sm:px-8 md:px-10 mb-10 sm:mb-12 relative z-10 w-full flex flex-col items-center justify-center max-w-[1400px] mx-auto text-center">
         <FadeIn y={40} className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           <div className="relative w-[100px] sm:w-[120px] md:w-[160px] lg:w-[180px] aspect-square z-0 shrink-0">
             <SquishBounce>
@@ -76,22 +108,55 @@ export const CertificatesSection = () => {
           </div>
           <TypingHeading
             text="CERTIFICATES"
-            className="hero-heading font-black uppercase leading-none tracking-normal text-center sm:text-left mb-0" 
+            className="hero-heading font-black uppercase leading-none tracking-normal text-center sm:text-left mb-0 w-full" 
             style={{ fontSize: 'clamp(3rem, 11vw, 150px)' }}
           />
         </FadeIn>
       </div>
+
+      {years.length > 0 && (
+        <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 mb-4 sm:mb-8 flex justify-end relative z-20">
+          <FadeIn y={20}>
+            <div className="flex items-center gap-1 sm:gap-2 bg-[#1a1c20] border border-white/5 rounded-full p-1 shadow-xl">
+              <button onClick={handlePrevYear} className="p-2 rounded-full hover:bg-white/10 transition-colors text-white/40 hover:text-white cursor-pointer active:scale-95">
+                <ChevronLeft />
+              </button>
+              <div className="relative w-16 sm:w-20 h-8 sm:h-10 overflow-hidden flex justify-center items-center">
+                <AnimatePresence mode="popLayout" custom={direction}>
+                  <motion.span
+                    key={selectedYear}
+                    custom={direction}
+                    initial={{ x: direction * 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: direction * -20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute font-mono text-lg sm:text-xl font-bold tracking-widest text-[#D7E2EA]"
+                  >
+                    {selectedYear}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+              <button onClick={handleNextYear} className="p-2 rounded-full hover:bg-white/10 transition-colors text-white/40 hover:text-white cursor-pointer active:scale-95">
+                <ChevronRight />
+              </button>
+            </div>
+          </FadeIn>
+        </div>
+      )}
       
       {/* Interactive Typography List */}
-      <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 relative z-20 flex flex-col pb-20">
-        {certificates.map((cert, index) => (
-          <FadeIn 
-            key={index} 
-            y={20} 
-            delay={index * 0.1}
-            className="w-full"
-          >
-            <a 
+      <div className="w-full max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 relative z-20 flex flex-col pb-20 min-h-[400px]">
+        <AnimatePresence mode="wait">
+          {filteredCertificates.map((cert, index) => (
+              <motion.div
+              key={cert.title + index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="w-full"
+            >
+              <a 
               href={cert.link} 
               target="_blank" 
               rel="noopener noreferrer" 
@@ -121,8 +186,9 @@ export const CertificatesSection = () => {
 
               </div>
             </a>
-          </FadeIn>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
 
       {/* The Floating Image Follower */}
@@ -138,9 +204,9 @@ export const CertificatesSection = () => {
         }}
       >
         {/* Pre-render all images and PDFs and toggle opacity for instant swapping */}
-        {certificates.map((cert, index) => (
+        {filteredCertificates.map((cert, index) => (
           <div 
-            key={index} 
+            key={cert.title + index} 
             className={`absolute inset-0 w-full h-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-center ${hoveredIndex === index ? 'opacity-100 scale-100 rotate-0 z-10' : 'opacity-0 scale-[0.85] -rotate-3 z-0'}`}
           >
             {cert.image ? (
