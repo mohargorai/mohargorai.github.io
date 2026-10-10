@@ -32,5 +32,13 @@ export const projects: Project[] = [
     description: "A cloud-native analytics platform featuring a dual-mode SQL engine, secure role-based dashboards, and real-time query sampling. Built with React, Rust, and MongoDB.",
     link: "https://github.com/Devkanti/Query_Engine",
     liveLink: "https://queryengine.vercel.app/",
+  },
+  {
+    num: "05",
+    cat: "Web & Application",
+    title: "CPU Scheduling Visualizer",
+    description: "An interactive visualization tool to simulate and understand various CPU scheduling algorithms.",
+    link: "https://github.com/mohargorai/cpu-scheduling-visualizer",
+    liveLink: "",
   }
 ];
