@@ -39,6 +39,6 @@ export const projects: Project[] = [
     title: "CPU Scheduling Visualizer",
     description: "An interactive visualization tool to simulate and understand various CPU scheduling algorithms.",
     link: "https://github.com/mohargorai/cpu-scheduling-visualizer",
-    liveLink: "",
+    liveLink: "https://os-simulator-fjco.onrender.com/",
   }
 ];
