@@ -2,13 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FadeIn, SquishBounce, TypingHeading } from '../ui';
 import { services } from '../../data/services';
+import type { Skill } from '../../types';
 
 const allSkills = services.flatMap(svc => svc.skills);
 const row1 = allSkills.slice(0, Math.ceil(allSkills.length / 3));
 const row2 = allSkills.slice(Math.ceil(allSkills.length / 3), Math.ceil(allSkills.length * 2 / 3));
 const row3 = allSkills.slice(Math.ceil(allSkills.length * 2 / 3));
 
-const MarqueeRow = ({ items, direction = "left", speed = "40s" }: { items: any[], direction?: "left" | "right", speed?: string }) => {
+const MarqueeRow = ({ items, direction = "left", speed = "40s" }: { items: Skill[], direction?: "left" | "right", speed?: string }) => {
   // We duplicate items to fill ultra-wide screens
   const baseItems = [...items, ...items, ...items, ...items];
   // We double it AGAIN to create identical left and right halves for the 50% translation loop

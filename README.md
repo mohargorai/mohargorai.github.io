@@ -24,12 +24,14 @@ The site steps away from traditional flat designs and embraces a modern **Dark G
 
 ### ✨ Key Features
 
+- **Interactive Tech Typography:** Features a physics-driven canvas typography engine (`TechText`) rendering the hero wordmark with metallic gradient fills, vector outline transitions, cybernetic telemetry boxes, draggable letters, and elastic spring ripple kicks.
+- **Canvas Physics & Starfield:** Lightweight 2D canvas particle field (`Antigravity`) with cursor magnetics, wave oscillations, and ambient particle dynamics.
 - **Extreme Performance:** Bypasses heavy React state updates for animations by utilizing raw `framer-motion` `useMotionValue` and `useSpring` hooks. Includes lazy-loading boundaries to drastically reduce initial bundle size (e.g. dynamic imports for heavy dependencies like `react-pdf`).
 - **Advanced Cursor Mechanics:** Features a bespoke background spotlight and a frosted-glass custom cursor, alongside a GSAP-powered target cursor that magnetically snaps to specific UI elements (like coding skill tags).
 - **Glassmorphic UI & 3D Cards:** Showcases beautifully customized glowing cards powered by sophisticated math to calculate edge proximity and render dynamic, tracking hover glows around borders. Includes a fully interactive, 3D `TiltedCard` profile showcase.
 - **Floating Navigation:** A custom-built, fixed floating mobile navbar featuring a meticulously choreographed, staggered GSAP-style entrance and closing sequence.
-- **Enterprise Architecture:** Structurally sound architecture separating atomic UI components from heavy layout sections and data constants.
-- **Fully Responsive:** Painstakingly crafted `clamp()` typography and flex layouts that look flawless from 4k monitors down to small mobile screens.
+- **Enterprise Architecture:** Structurally sound architecture separating atomic UI components from heavy layout segments and modular data constants.
+- **Fully Responsive:** Painstakingly crafted typography and flex layouts verified across 4K displays down to small 360px mobile viewports without horizontal overflow.
 
 ---
 

@@ -31,6 +31,7 @@ export const BackToTopButton = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
+          aria-label="Back to top"
           data-cursor-padding="6"
           className="cursor-target fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[45] w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#D7E2EA]/10 backdrop-blur-md border border-[#D7E2EA]/20 flex items-center justify-center shadow-lg hover:bg-[#D7E2EA]/20 hover:border-[#D7E2EA]/40 transition-colors pointer-events-auto"
         >

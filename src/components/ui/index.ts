@@ -20,3 +20,5 @@ export * from './BackToTopButton';
 export * from './Antigravity';
 export * from './FlickeringGridQR';
 export * from './Dock';
+export { default as TechText } from './TechText';
+export type { TechTextProps } from './TechText';

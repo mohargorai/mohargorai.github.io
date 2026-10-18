@@ -148,18 +148,18 @@ export const ContactSection = () => {
                     <h3 className="text-[#D7E2EA] font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-widest relative z-10 mb-4 pr-16">Send a Message</h3>
                     
                     <div className="relative z-10">
-                      <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Name</label>
-                      <input type="text" name="name" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="Mohar Gorai" />
+                      <label htmlFor="contact-name" className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Name</label>
+                      <input id="contact-name" type="text" name="name" autoComplete="name" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="Mohar Gorai" />
                     </div>
 
                     <div className="relative z-10">
-                      <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Email</label>
-                      <input type="email" name="email" required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="work.mohargorai@gmail.com" />
+                      <label htmlFor="contact-email" className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Email</label>
+                      <input id="contact-email" type="email" name="email" autoComplete="email" spellCheck={false} required className="w-full bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors" placeholder="work.mohargorai@gmail.com" />
                     </div>
 
                     <div className="relative z-10 flex-grow">
-                      <label className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Message</label>
-                      <textarea name="message" required rows={5} className="w-full h-[calc(100%-2rem)] bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors resize-none" placeholder="Hi!!"></textarea>
+                      <label htmlFor="contact-message" className="text-[#D7E2EA]/50 uppercase tracking-widest text-xs font-bold mb-3 block">Your Message</label>
+                      <textarea id="contact-message" name="message" required rows={5} className="w-full h-[calc(100%-2rem)] bg-[#121316]/60 border-2 border-[#D7E2EA]/20 rounded-2xl px-6 py-4 text-[#D7E2EA] font-medium focus:outline-none focus:border-[#D7E2EA]/80 transition-colors resize-none" placeholder="Hi!!"></textarea>
                     </div>
 
                     {/* Web3Forms Honeypot - Invisible to humans, catches bots */}

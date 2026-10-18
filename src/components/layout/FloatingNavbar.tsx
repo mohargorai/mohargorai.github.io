@@ -47,6 +47,8 @@ export const FloatingNavbar = () => {
             {/* Hamburger Button */}
             <motion.button
               onClick={toggleMenu}
+              aria-label="Toggle Navigation Menu"
+              aria-expanded={isOpen}
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
               whileTap={{ scale: 0.9 }}

@@ -68,12 +68,14 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     return (hasTouchScreen && isSmallScreen) || isMobileUserAgent;
   }, []);
 
+  const containingBlockOffsetRef = useRef({ x: 0, y: 0 });
+
   const constants = useMemo(() => ({ borderWidth: 3, cornerSize: 12 }), []);
 
   const moveCursor = useCallback((x: number, y: number) => {
     if (!cursorRef.current) return;
-    const { x: offsetX, y: offsetY } = getContainingBlockOffset(containingBlockRef.current);
-    gsap.to(cursorRef.current, { x: x - offsetX, y: y - offsetY, duration: 0.1, ease: 'power3.out' });
+    const offset = containingBlockOffsetRef.current;
+    gsap.set(cursorRef.current, { x: x - offset.x, y: y - offset.y });
   }, []);
 
   useEffect(() => {
@@ -90,6 +92,10 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     containingBlockRef.current = getContainingBlock(cursor);
     const getOffset = () => getContainingBlockOffset(containingBlockRef.current);
+    const updateOffset = () => {
+      containingBlockOffsetRef.current = getOffset();
+    };
+    updateOffset();
 
     let activeTarget: Element | null = null;
     let currentLeaveHandler: (() => void) | null = null;
@@ -102,7 +108,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       currentLeaveHandler = null;
     };
 
-    const initialOffset = getOffset();
+    const initialOffset = containingBlockOffsetRef.current;
     gsap.set(cursor, {
       xPercent: -50,
       yPercent: -50,
@@ -131,7 +137,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       const customPadding = activeTarget.getAttribute('data-cursor-padding');
       const padding = customPadding ? parseFloat(customPadding) : 4;
       const { cornerSize } = constants;
-      const { x: offsetX, y: offsetY } = getOffset();
+      const { x: offsetX, y: offsetY } = containingBlockOffsetRef.current;
       
       targetCornerPositionsRef.current = [
         { x: rect.left - padding - offsetX, y: rect.top - padding - offsetY },
@@ -153,24 +159,29 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
         const finalX = currentX + (targetX - currentX) * strength;
         const finalY = currentY + (targetY - currentY) * strength;
         const duration = strength >= 0.99 ? (parallaxOn ? 0.2 : 0) : 0.05;
-        gsap.to(corner, {
-          x: finalX,
-          y: finalY,
-          duration: duration,
-          ease: duration === 0 ? 'none' : 'power1.out',
-          overwrite: 'auto'
-        });
+        if (duration === 0) {
+          gsap.set(corner, { x: finalX, y: finalY });
+        } else {
+          gsap.to(corner, {
+            x: finalX,
+            y: finalY,
+            duration: duration,
+            ease: 'power1.out',
+            overwrite: 'auto'
+          });
+        }
       });
     };
 
     tickerFnRef.current = tickerFn;
 
     const moveHandler = (e: MouseEvent) => moveCursor(e.clientX, e.clientY);
-    window.addEventListener('mousemove', moveHandler);
+    window.addEventListener('mousemove', moveHandler, { passive: true });
 
     const scrollHandler = () => {
+      updateOffset();
       if (!activeTarget || !cursorRef.current) return;
-      const { x: offsetX, y: offsetY } = getOffset();
+      const { x: offsetX, y: offsetY } = containingBlockOffsetRef.current;
       const mouseX = (gsap.getProperty(cursorRef.current, 'x') as number) + offsetX;
       const mouseY = (gsap.getProperty(cursorRef.current, 'y') as number) + offsetY;
       const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
@@ -199,16 +210,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     window.addEventListener('mouseup', mouseUpHandler);
 
     const enterHandler = (e: MouseEvent) => {
-      const directTarget = e.target as Element;
-      const allTargets: Element[] = [];
-      let current: Element | null = directTarget;
-      while (current && current !== document.body) {
-        if (current.matches(targetSelector)) {
-          allTargets.push(current);
-        }
-        current = current.parentElement;
-      }
-      const target = allTargets[0] || null;
+      const target = (e.target as Element | null)?.closest?.(targetSelector) || null;
       if (!target || !cursorRef.current || !cornersRef.current) return;
       if (activeTarget === target) return;
       if (activeTarget) {
@@ -309,8 +311,9 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
 
     const resizeHandler = () => {
       containingBlockRef.current = getContainingBlock(cursor);
+      updateOffset();
     };
-    window.addEventListener('resize', resizeHandler);
+    window.addEventListener('resize', resizeHandler, { passive: true });
 
     return () => {
       if (tickerFnRef.current) {

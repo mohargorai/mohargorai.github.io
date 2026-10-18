@@ -13,7 +13,16 @@ const ProjectRow = ({ project, isExpanded, onToggle }: { project: typeof project
   return (
     <div className="w-full border-b border-white/10 last:border-0 group">
       <div 
-        className="py-6 sm:py-8 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4"
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onToggle();
+          }
+        }}
+        className="py-6 sm:py-8 cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40 rounded-lg"
         onClick={onToggle}
       >
         <div className="flex items-center gap-6">

@@ -61,8 +61,13 @@ export const FlickeringGridQR: React.FC<FlickeringGridQRProps> = ({
 
     const startTime = Date.now();
     let animationFrameId: number;
+    let isVisible = true;
 
     const render = () => {
+      if (!isVisible) {
+        animationFrameId = 0;
+        return;
+      }
       ctx.clearRect(0, 0, size, size);
       const elapsed = Date.now() - startTime;
       
@@ -135,10 +140,19 @@ export const FlickeringGridQR: React.FC<FlickeringGridQRProps> = ({
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    });
+    observer.observe(canvas);
+
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [qrMatrix, size, color]);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, useMemo } from 'react';
+import React, { useState, useEffect, Suspense, useMemo, useRef } from 'react';
 import { motion, useSpring, AnimatePresence } from 'framer-motion';
 import { FadeIn, TypingHeading, SquishBounce, Skeleton } from '../ui';
 import { certificates } from '../../data/certificates';
@@ -49,11 +49,17 @@ export const CertificatesSection = () => {
   // Smoothly fade in/out the follower
   const opacity = useSpring(0, { stiffness: 300, damping: 30 });
   const scale = useSpring(0.8, { stiffness: 300, damping: 30 });
+  const hoveredIndexRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    hoveredIndexRef.current = hoveredIndex;
+  }, [hoveredIndex]);
 
   useEffect(() => {
     if (!isHoverDevice) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (hoveredIndexRef.current === null) return;
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     };
@@ -63,7 +69,7 @@ export const CertificatesSection = () => {
       setHoveredIndex(null);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {

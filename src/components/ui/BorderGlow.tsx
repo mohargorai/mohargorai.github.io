@@ -90,42 +90,32 @@ export const BorderGlow: React.FC<BorderGlowProps> = ({
   const [edgeProximity, setEdgeProximity] = useState(0);
   const [sweepActive, setSweepActive] = useState(false);
 
-  const getCenterOfElement = useCallback((el: HTMLElement) => {
-    const { width, height } = el.getBoundingClientRect();
-    return [width / 2, height / 2];
-  }, []);
-
-  const getEdgeProximity = useCallback((el: HTMLElement, x: number, y: number) => {
-    const [cx, cy] = getCenterOfElement(el);
-    const dx = x - cx;
-    const dy = y - cy;
-    let kx = Infinity;
-    let ky = Infinity;
-    if (dx !== 0) kx = cx / Math.abs(dx);
-    if (dy !== 0) ky = cy / Math.abs(dy);
-    return Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
-  }, [getCenterOfElement]);
-
-  const getCursorAngle = useCallback((el: HTMLElement, x: number, y: number) => {
-    const [cx, cy] = getCenterOfElement(el);
-    const dx = x - cx;
-    const dy = y - cy;
-    if (dx === 0 && dy === 0) return 0;
-    const radians = Math.atan2(dy, dx);
-    let degrees = radians * (180 / Math.PI) + 90;
-    if (degrees < 0) degrees += 360;
-    return degrees;
-  }, [getCenterOfElement]);
-
   const handlePointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setEdgeProximity(getEdgeProximity(card, x, y));
-    setCursorAngle(getCursorAngle(card, x, y));
-  }, [getEdgeProximity, getCursorAngle]);
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = x - cx;
+    const dy = y - cy;
+
+    let kx = Infinity;
+    let ky = Infinity;
+    if (dx !== 0) kx = cx / Math.abs(dx);
+    if (dy !== 0) ky = cy / Math.abs(dy);
+    const prox = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+
+    let degrees = 0;
+    if (dx !== 0 || dy !== 0) {
+      degrees = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      if (degrees < 0) degrees += 360;
+    }
+
+    setEdgeProximity(prox);
+    setCursorAngle(degrees);
+  }, []);
 
   useEffect(() => {
     if (!animated) return;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText, Antigravity } from '../ui';
+import { FadeIn, ContactButton, DownloadCVButton, Magnet, TiltedCard, ScrambleText, Antigravity, TechText } from '../ui';
 
 const welcomeWords = [
   "Welcome",
@@ -77,22 +77,35 @@ export const HeroSection = () => {
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pointer-events-none w-full">
         
         <div className="flex flex-col items-start justify-center w-fit">
-          <div className="overflow-hidden w-full flex justify-start pl-2 sm:pl-0 pr-4 sm:pr-6">
-            <motion.h1 
-              initial={{ opacity: 1 }}
-              className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-left text-[10.5vw] sm:text-[11vw] md:text-[12vw] lg:text-[12.5vw] mt-6 sm:mt-4 md:-mt-5 pr-2"
-            >
-              {Array.from("Hi, I'm Mohar").map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ visibility: "hidden" }}
-                  animate={appLoaded ? { visibility: "visible" } : { visibility: "hidden" }}
-                  transition={{ duration: 0, delay: appLoaded ? 0.3 + index * 0.1 : 0 }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))}
-            </motion.h1>
+          <div className="w-full flex justify-start pl-2 sm:pl-0 pr-4 sm:pr-6 mt-6 sm:mt-4 md:-mt-5">
+            <div className="w-[88vw] sm:w-[84vw] md:w-[78vw] lg:w-[74vw] max-w-[1050px] h-[13vw] sm:h-[12vw] md:h-[12vw] lg:h-[12.5vw] min-h-[60px] max-h-[170px] pointer-events-auto -ml-1 sm:-ml-2">
+              <h1 className="sr-only">HI, I'M MOHAR</h1>
+              <TechText
+                text="HI, I'M MOHAR"
+                fontFamily="'Kanit', sans-serif"
+                fontWeight={900}
+                fontSize={200}
+                letterSpacing={-0.03}
+                align="left"
+                paddingX={8}
+                paddingY={12}
+                gradient={['#646973', '#BBCCD7']}
+                color="#BBCCD7"
+                accentColor="#67E8F9"
+                reveal="letter"
+                dashLength={4}
+                dashGap={2}
+                specks={15}
+                intro="none"
+                introDuration={1.8}
+                clickKick
+                draggable
+                selection
+                labels
+                sweep={false}
+                guides={false}
+              />
+            </div>
           </div>
 
           <div className="h-[40px] sm:h-[50px] md:h-[70px] flex justify-start items-center w-full mt-2 sm:mt-0 px-2 sm:px-0">

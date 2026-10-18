@@ -41,11 +41,12 @@ export const Antigravity: React.FC<AntigravityProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
+    let animationFrameId: number = 0;
     let width = canvas.offsetWidth;
     let height = canvas.offsetHeight;
+    let isVisible = true;
     
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.scale(dpr, dpr);
@@ -54,14 +55,19 @@ export const Antigravity: React.FC<AntigravityProps> = ({
     const virtualMouse = { x: width / 2, y: height / 2 };
     let lastMouseMove = Date.now();
 
+    let canvasRect = canvas.getBoundingClientRect();
+    const updateRect = () => {
+      if (canvas) canvasRect = canvas.getBoundingClientRect();
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouse.x = e.clientX - canvasRect.left;
+      mouse.y = e.clientY - canvasRect.top;
       lastMouseMove = Date.now();
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('scroll', updateRect, { passive: true });
 
     const handleResize = () => {
       width = canvas.offsetWidth;
@@ -69,8 +75,9 @@ export const Antigravity: React.FC<AntigravityProps> = ({
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
+      updateRect();
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     const particles = Array.from({ length: count }).map(() => {
       return {
@@ -88,6 +95,11 @@ export const Antigravity: React.FC<AntigravityProps> = ({
     const startTime = Date.now();
 
     const render = () => {
+      if (!isVisible) {
+        animationFrameId = 0;
+        return;
+      }
+
       const now = Date.now();
       const elapsed = (now - startTime) / 1000;
 
@@ -105,6 +117,7 @@ export const Antigravity: React.FC<AntigravityProps> = ({
       const globalRotation = elapsed * rotationSpeed;
 
       ctx.fillStyle = color;
+      ctx.beginPath();
 
       particles.forEach(p => {
         p.t += p.speed;
@@ -135,24 +148,35 @@ export const Antigravity: React.FC<AntigravityProps> = ({
         p.x += (targetX - p.x) * lerpSpeed;
         p.y += (targetY - p.y) * lerpSpeed;
 
-        ctx.beginPath();
         if (particleShape === 'sphere' || particleShape === 'capsule') {
+          ctx.moveTo(p.x + currentSize, p.y);
           ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
         } else {
           ctx.rect(p.x - currentSize, p.y - currentSize, currentSize * 2, currentSize * 2);
         }
-        ctx.fill();
       });
+
+      ctx.fill();
 
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    });
+    observer.observe(canvas);
+
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', updateRect);
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [count, magnetRadius, ringRadius, waveSpeed, waveAmplitude, particleSize, lerpSpeed, color, autoAnimate, particleVariance, rotationSpeed, pulseSpeed, particleShape, fieldStrength]);
 

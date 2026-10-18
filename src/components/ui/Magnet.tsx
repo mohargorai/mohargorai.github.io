@@ -18,12 +18,23 @@ export const Magnet = ({
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isActive, setIsActive] = useState(false);
+  const isActiveRef = useRef(false);
 
   useEffect(() => {
+    let cachedRect: DOMRect | null = null;
+    const updateRect = () => {
+      if (ref.current) cachedRect = ref.current.getBoundingClientRect();
+    };
+    updateRect();
+
+    window.addEventListener('scroll', updateRect, { passive: true });
+    window.addEventListener('resize', updateRect, { passive: true });
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
+      if (!cachedRect) cachedRect = ref.current.getBoundingClientRect();
       const { clientX, clientY } = e;
-      const { left, top, width, height } = ref.current.getBoundingClientRect();
+      const { left, top, width, height } = cachedRect;
       const centerX = left + width / 2;
       const centerY = top + height / 2;
       
@@ -33,19 +44,27 @@ export const Magnet = ({
         clientY >= top - padding &&
         clientY <= top + height + padding
       ) {
-        setIsActive(true);
+        if (!isActiveRef.current) {
+          isActiveRef.current = true;
+          setIsActive(true);
+        }
         setPosition({
           x: (clientX - centerX) / strength,
           y: (clientY - centerY) / strength
         });
-      } else {
+      } else if (isActiveRef.current) {
+        isActiveRef.current = false;
         setIsActive(false);
         setPosition({ x: 0, y: 0 });
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', updateRect);
+      window.removeEventListener('resize', updateRect);
+    };
   }, [padding, strength]);
 
   return (
