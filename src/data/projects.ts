@@ -40,5 +40,13 @@ export const projects: Project[] = [
     description: "An interactive visualization tool to simulate and understand various CPU scheduling algorithms.",
     link: "https://github.com/mohargorai/cpu-scheduling-visualizer",
     liveLink: "https://os-simulator-fjco.onrender.com/",
+  },
+  {
+    num: "06",
+    cat: "Full-Stack & AI",
+    title: "VIT AI Campus Helpdesk",
+    description: "Production AI-powered campus helpdesk assistant for VIT students and support staff, featuring smart query routing, multi-turn conversational support, and instant resolution workflows.",
+    link: "https://github.com/mohargorai/vit-ai-campus-helpdesk",
+    liveLink: "https://vit-ai-campus-helpdesk.onrender.com/",
   }
 ];
